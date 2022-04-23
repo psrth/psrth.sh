@@ -69,6 +69,11 @@
 }
 
 @media only screen and (max-width: 600px) {
+    .container {
+        width: 100vw;
+        height: 80vh;
+    }
+
     .subcontainer {
         width: 80vw;
     }

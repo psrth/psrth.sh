@@ -66,14 +66,14 @@ function App() {
 
           <span>
             <a 
-              href="" 
+              href="https://drive.google.com/file/d/1Tf9pPPseQPO8gatYxUvc2sOf-tjXHR8R/view?usp=sharing" 
               target="_blank"
             >resume  -  </a>
           </span>
 
           <span>
             <a 
-              href="" 
+              href="mailto:psrth@protonmail.com" 
               target="_blank"
             >email</a>
           </span>
