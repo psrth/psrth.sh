@@ -119,6 +119,42 @@
   background: #77573A;
 }
 
+.container__card__reading {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.read__card {
+  width: 285px;
+  background: #292929;
+  height: fit-content;
+  display: flex;
+  padding: 20px 20px 20px 20px;
+  margin: 8px 20px 8px 0px;
+  line-height: 1.2;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: 10px;
+}
+
+.read__card__h {
+  font-size: 22px;
+  color: #fff;
+  font-weight: 600;
+  margin: 0 0 5px 0;
+  padding: 0;
+}
+
+.read__card__p {
+  font-size: 18px;
+  color: #fff;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
 
 @media only screen and (max-width: 1100px) {
   .card {
@@ -153,5 +189,11 @@
 
   .container__card {
     flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .read__card {
+    width: 100%;
   }
 }

@@ -1,6 +1,34 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
+const readingList = [
+  {
+    id: 1,
+    title: "Psychology of Money",
+    author: "Parth Sharma"
+  },
+  {
+    id: 2,
+    title: "Psychology of Money",
+    author: "Parth Sharma"
+  },
+  {
+    id: 3,
+    title: "Psychology of Money",
+    author: "Parth Sharma"
+  },
+  {
+    id: 4,
+    title: "Psychology of Money",
+    author: "Parth Sharma"
+  },
+  {
+    id: 5,
+    title: "Psychology of Money",
+    author: "Parth Sharma"
+  },
+]
+
 export default function Home() {
   return (
     <div className={styles.master}>
@@ -65,6 +93,22 @@ export default function Home() {
           <p className={styles.content__text}>
             Over the summer, I’ll probably be working on a couple of things — building out a few SaaS products @orangeyak, learning more about the web3 space and building with Selenium, backend arch in Node.js, and competitive coding for recruitments season.
           </p>
+        </div>
+
+
+        {/* WORK SECTION */}
+        <div className={styles.container__content}>
+          <h2 className={styles.content__subheading}>Reading</h2>
+          <div className={styles.container__card__reading}>
+
+            {readingList.map((book, id) => (
+              <div className={styles.read__card}>
+                <h3 className={styles.read__card__h}>{book.title}</h3>
+                <p className={styles.read__card__p}>{book.author}</p>
+              </div>
+            ))}
+            
+          </div>
         </div>
         
 
