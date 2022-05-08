@@ -121,8 +121,8 @@ export default function Home() {
           <h2 className={styles.content__subheading}>Reading</h2>
           <div className={styles.container__card__reading}>
 
-            {readingList.map((book, key) => (
-              <div className={styles.read__card}>
+            {readingList.map((book, id) => (
+              <div key={book.id} className={styles.read__card}>
                 <h3 className={styles.read__card__h}>{book.title}</h3>
                 <p className={styles.read__card__p}>{book.author}</p>
               </div>
