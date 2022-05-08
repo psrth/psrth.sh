@@ -1,0 +1,283 @@
+.master {
+    width: 100%;
+    height: 100%;
+    background: #313131;
+    display: flex;
+}
+
+.card {
+    width: 1000px;
+    height: 100%;
+    background: #232323;
+    margin: 50px auto 50px auto;
+    border-radius: 25px;
+    box-shadow: #2a2a2a 20px 20px 24px;
+}
+
+.header {
+  margin: 30px 40px 30px 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header__pp {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  margin-right: 20px;
+}
+
+.header__title {
+  font-size: 36px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.header__navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header__navlink {
+  font-size: 24px;
+  color: #fff;
+  font-weight: 600;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.divider {
+  width: 100%;
+  height: 5px;
+  background: #292929;
+}
+
+.content__subheading {
+  font-size: 28px;
+  color: #fff;
+  font-weight: 600;
+  margin: 0;
+}
+
+.container__content {
+  padding: 30px 40px 30px 40px;
+}
+
+.content__text {
+  font-size: 20px;
+  color: #fff;
+  line-height: 1.4;
+  font-weight: 400;
+  margin-top: 15px;
+  width: 80%;
+}
+
+.container__card {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 10px;
+  justify-content: space-between;
+}
+
+.work__card__1, .work__card__2, .work__card__3 {
+  width: 32%;
+  background: #2D4E6D;
+  height: 150px;
+  display: flex;
+  padding: 0 20px 5px 20px;
+  line-height: 1.2;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: 10px;
+  font-size: 18px;
+  color: #fff;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.work__card__text {
+  font-size: 18px;
+  color: #fff;
+  font-weight: 500;
+}
+
+.work__card__1:hover, 
+.work__card__2:hover, 
+.work__card__3:hover {
+  box-shadow: #353535 5px 5px 5px;
+}
+
+.work__card__2 {
+  background: #893E3F;
+}
+
+.work__card__3 {
+  background: #77573A;
+}
+
+.container__card__reading {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.read__card {
+  width: 285px;
+  background: #292929;
+  height: fit-content;
+  display: flex;
+  padding: 20px 20px 20px 20px;
+  margin: 8px 20px 8px 0px;
+  line-height: 1.2;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: 10px;
+}
+
+.read__card__h {
+  font-size: 22px;
+  color: #fff;
+  font-weight: 600;
+  margin: 0 0 5px 0;
+  padding: 0;
+}
+
+.read__card__p {
+  font-size: 18px;
+  color: #fff;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+
+.container__footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0 30px 0;
+}
+
+.footer__copyright {
+  font-size: 12px;
+  color: #7E7E7E;
+  margin: 0;
+  padding: 0;
+}
+
+.footer__sign {
+  font-size: 14px;
+  margin-top: 10px;
+  color: #fff;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+}
+
+.container__social {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  flex-wrap: wrap;
+}
+
+.card__social,
+.card__social1,
+.card__social2,
+.card__social3 {
+  display: flex;
+  flex-direction: row;
+  padding: 15px;
+  background: #1C494F;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  margin: 7px 10px 7px 0;
+  cursor: pointer;
+}
+
+/* 442E4F */
+.card__social1 {
+  background: #292929;
+}
+
+.card__social2 {
+  background: #1C374F;
+}
+
+.card__social3 {
+  background: #442E4F;
+}
+
+.card__text {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  margin-left: 15px;
+  color: #FFF;
+  padding: 0;
+}
+
+@media only screen and (max-width: 1100px) {
+  .card {
+    width: 90vw;
+    margin: 20px auto 20px auto;
+  }
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .header__pp {
+    display: none;
+  }
+
+  .content__text {
+    font-size: 16px;
+    color: #fff;
+    line-height: 1.5;
+    font-weight: 400;
+    margin-top: 15px;
+    width: 100%;
+  }
+
+  .work__card__1, .work__card__2, .work__card__3 {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .container__card {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .read__card {
+    width: 100%;
+  }
+
+  .read__card__h {
+    font-size: 18px;
+  }
+  
+  .read__card__p {
+    font-size: 16px;
+  }
+}
