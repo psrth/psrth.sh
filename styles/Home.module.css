@@ -7,7 +7,7 @@
 
 .card {
     width: 1000px;
-    height: 1000px;
+    height: 100%;
     background: #232323;
     margin: 50px auto 50px auto;
     border-radius: 25px;
@@ -69,7 +69,7 @@
 }
 
 .container__content {
-  padding: 40px 40px 0 40px;
+  padding: 30px 40px 30px 40px;
 }
 
 .content__text {

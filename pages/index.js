@@ -41,6 +41,7 @@ export default function Home() {
           </p>
         </div>
 
+
         {/* WORK SECTION */}
         <div className={styles.container__content}>
           <h2 className={styles.content__subheading}>Work</h2>
@@ -55,6 +56,15 @@ export default function Home() {
               <p className={styles.work__card__text}>design+tech lead @conquest, India’s largest student-run startup accelerator</p>
             </div>
           </div>
+        </div>
+
+
+        {/* CONTENT */}
+        <div className={styles.container__content}>
+          <h2 className={styles.content__subheading}>Learning</h2>
+          <p className={styles.content__text}>
+            Over the summer, I’ll probably be working on a couple of things — building out a few SaaS products @orangeyak, learning more about the web3 space and building with Selenium, backend arch in Node.js, and competitive coding for recruitments season.
+          </p>
         </div>
         
 
