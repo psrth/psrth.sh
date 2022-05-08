@@ -110,6 +110,26 @@ export default function Home() {
             
           </div>
         </div>
+
+
+        {/* CONTENT */}
+        <div className={styles.container__content}>
+          <h2 className={styles.content__subheading}>Links</h2>
+          <p className={styles.content__text}>
+            Here are all the places you can find me on the internet. If you want to contact me for work, to grab a cup of coffee, or just chat about stuff, drop me a DM on Twitter.
+          </p>
+          <p className={styles.content__text}>
+            or shoot me an email at  <strong>psrth[at]proton[dot]me</strong>
+          </p>
+        </div>
+
+         {/* DIVIDER */}
+         <div className={styles.divider} />
+
+         <div className={styles.container__footer}>
+           <p className={styles.footer__copyright}>© 2022 — All Rights Reserved</p>
+           <p className={styles.footer__sign}>Designed & Coded by Parth Sharma</p>
+         </div>
         
 
       </div>

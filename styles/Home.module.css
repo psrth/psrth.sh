@@ -156,6 +156,32 @@
   padding: 0;
 }
 
+.container__footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0 30px 0;
+}
+
+.footer__copyright {
+  font-size: 12px;
+  color: #7E7E7E;
+  margin: 0;
+  padding: 0;
+}
+
+.footer__sign {
+  font-size: 14px;
+  margin-top: 10px;
+  color: #fff;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+}
+
 @media only screen and (max-width: 1100px) {
   .card {
     width: 90vw;
