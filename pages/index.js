@@ -11,6 +11,7 @@ export default function Home() {
       </Head>
 
       <div className={styles.card}>
+
         {/* HEADER SECTION */}
         <div className={styles.header}>
           <div className={styles.header__main}>
@@ -18,7 +19,7 @@ export default function Home() {
               src="https://avatars.githubusercontent.com/u/45586386?v=4" 
               className={styles.header__pp} 
             />
-            <div className={styles.header__title}>Parth Sharma</div>
+            <h1 className={styles.header__title}>Parth Sharma</h1>
           </div>
 
           <div className={styles.header__navbar}>
@@ -30,6 +31,33 @@ export default function Home() {
 
         {/* DIVIDER */}
         <div className={styles.divider} />
+
+
+        {/* CONTENT */}
+        <div className={styles.container__content}>
+          <h2 className={styles.content__subheading}>About Me</h2>
+          <p className={styles.content__text}>
+            Hey there 👋🏻 ! I’m Parth, (aka @psrth) — a sophomore at BITS Pilani by day, and a developer+designer by night. I love building tech-based products, YOLO-ing all my money, debating, and travelling (in no particular order).
+          </p>
+        </div>
+
+        {/* WORK SECTION */}
+        <div className={styles.container__content}>
+          <h2 className={styles.content__subheading}>Work</h2>
+          <div className={styles.container__card}>
+            <div className={styles.work__card__1}>
+              <p className={styles.work__card__text}>working on a stealth startup based in the crypto/web3 space.</p>
+            </div>
+            <div className={styles.work__card__2}>
+              <p className={styles.work__card__text}>co-founder @orangeyak, a digital agency in India. all things ops/design/tech.</p>
+            </div>
+            <div className={styles.work__card__3}>
+              <p className={styles.work__card__text}>design+tech lead @conquest, India’s largest student-run startup accelerator</p>
+            </div>
+          </div>
+        </div>
+        
+
       </div>
     </div>
   )
