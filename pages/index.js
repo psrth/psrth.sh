@@ -10,7 +10,27 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className={styles.card}></div>
+      <div className={styles.card}>
+        {/* HEADER SECTION */}
+        <div className={styles.header}>
+          <div className={styles.header__main}>
+            <img 
+              src="https://avatars.githubusercontent.com/u/45586386?v=4" 
+              className={styles.header__pp} 
+            />
+            <div className={styles.header__title}>Parth Sharma</div>
+          </div>
+
+          <div className={styles.header__navbar}>
+            <div className={styles.header__navlink}>Blog</div>
+            <div className={styles.header__navlink}>Resume</div>
+            <div className={styles.header__navlink}>Portfolio</div>
+          </div>
+        </div>
+
+        {/* DIVIDER */}
+        <div className={styles.divider} />
+      </div>
     </div>
   )
 }

@@ -14,9 +14,67 @@
     box-shadow: #2a2a2a 20px 20px 24px;
 }
 
+.header {
+  margin: 30px 40px 30px 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header__pp {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  margin-right: 20px;
+}
+
+.header__title {
+  font-size: 36px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.header__navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header__navlink {
+  font-size: 24px;
+  color: #fff;
+  font-weight: 600;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.divider {
+  width: 100%;
+  height: 5px;
+  background: #292929;
+}
+
 @media only screen and (max-width: 1100px) {
     .card {
       width: 90vw;
       margin: 20px auto 20px auto;
+    }
+
+    .header {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+
+    .header__pp {
+      display: none;
     }
   }
