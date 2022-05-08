@@ -1,33 +1,43 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
+import { 
+  FaLinkedin, 
+  FaGithub,
+  FaTwitter,
+  FaInstagram
+} from "react-icons/fa";
+
 const readingList = [
   {
     id: 1,
-    title: "Psychology of Money",
-    author: "Parth Sharma"
+    title: "Essentialism",
+    author: "Greg McKeown"
   },
   {
     id: 2,
-    title: "Psychology of Money",
-    author: "Parth Sharma"
+    title: "Trillion Dollar Coach",
+    author: "Eric Schmidt"
   },
   {
     id: 3,
-    title: "Psychology of Money",
-    author: "Parth Sharma"
+    title: "Zero to One",
+    author: "Peter Thiel"
   },
   {
     id: 4,
     title: "Psychology of Money",
-    author: "Parth Sharma"
+    author: "Morgan Housel"
   },
   {
     id: 5,
-    title: "Psychology of Money",
-    author: "Parth Sharma"
+    title: "Phantasmal Media",
+    author: "Dr. Fox Harrell"
   },
 ]
+
+
+
 
 export default function Home() {
   return (
@@ -57,17 +67,24 @@ export default function Home() {
           </div>
         </div>
 
+
+
+
         {/* DIVIDER */}
         <div className={styles.divider} />
 
 
-        {/* CONTENT */}
+
+
+        {/* CONTENT SECTION */}
         <div className={styles.container__content}>
           <h2 className={styles.content__subheading}>About Me</h2>
           <p className={styles.content__text}>
             Hey there 👋🏻 ! I’m Parth, (aka @psrth) — a sophomore at BITS Pilani by day, and a developer+designer by night. I love building tech-based products, YOLO-ing all my money, debating, and travelling (in no particular order).
           </p>
         </div>
+
+
 
 
         {/* WORK SECTION */}
@@ -87,7 +104,9 @@ export default function Home() {
         </div>
 
 
-        {/* CONTENT */}
+
+
+        {/* LEARNING SECTION */}
         <div className={styles.container__content}>
           <h2 className={styles.content__subheading}>Learning</h2>
           <p className={styles.content__text}>
@@ -96,7 +115,8 @@ export default function Home() {
         </div>
 
 
-        {/* WORK SECTION */}
+
+        {/* READING SECTION */}
         <div className={styles.container__content}>
           <h2 className={styles.content__subheading}>Reading</h2>
           <div className={styles.container__card__reading}>
@@ -112,26 +132,67 @@ export default function Home() {
         </div>
 
 
-        {/* CONTENT */}
+
+
+        {/* LINKS SECTION */}
         <div className={styles.container__content}>
           <h2 className={styles.content__subheading}>Links</h2>
           <p className={styles.content__text}>
             Here are all the places you can find me on the internet. If you want to contact me for work, to grab a cup of coffee, or just chat about stuff, drop me a DM on Twitter.
           </p>
+          
+          <div className={styles.container__social}>
+
+            <a href="https://github.com/psrth" target="_blank">
+              <div className={styles.card__social1}>
+                <FaGithub color="white" size="20px" />
+                <p className={styles.card__text}>Github</p>
+              </div>
+            </a>
+
+            <a href="https://linkedin.com/in/psrth" target="_blank">
+              <div className={styles.card__social2}>
+                <FaLinkedin color="white" size="20px" />
+                <p className={styles.card__text}>LinkedIn</p>
+              </div>
+            </a>
+
+            <a href="https://twitter.com/psrthsharma" target="_blank">
+              <div className={styles.card__social}>
+                <FaTwitter color="white" size="20px" />
+                <p className={styles.card__text}>Twitter</p>
+              </div>
+            </a>
+
+            <a href="https://instagram.com/psrthsharma" target="_blank">
+              <div className={styles.card__social3}>
+                <FaInstagram color="white" size="20px" />
+                <p className={styles.card__text}>Instagram</p>
+              </div>
+            </a>
+
+          </div>
+
           <p className={styles.content__text}>
             or shoot me an email at  <strong>psrth[at]proton[dot]me</strong>
           </p>
         </div>
 
+
+
+
+
          {/* DIVIDER */}
          <div className={styles.divider} />
 
+
+
+         {/* FOOTER SECTION*/}
          <div className={styles.container__footer}>
            <p className={styles.footer__copyright}>© 2022 — All Rights Reserved</p>
            <p className={styles.footer__sign}>Designed & Coded by Parth Sharma</p>
          </div>
-        
-
+      
       </div>
     </div>
   )
