@@ -14,3 +14,20 @@ a {
 * {
   box-sizing: border-box;
 }
+
+html {
+  scrollbar-face-color: #646464;
+  scrollbar-base-color: #646464;
+  scrollbar-3dlight-color: #646464;
+  scrollbar-highlight-color: #646464;
+  scrollbar-track-color: #000;
+  scrollbar-arrow-color: #000;
+}
+
+::-webkit-scrollbar { width: 10px; height: 3px;}
+::-webkit-scrollbar-button {  background-color: #313131; }
+::-webkit-scrollbar-track {  background-color: #313131;}
+::-webkit-scrollbar-track-piece { background-color: #313131;}
+::-webkit-scrollbar-thumb { height: 50px; background-color: #232323; border-radius: 20px;}
+::-webkit-scrollbar-corner { background-color: #313131;}
+::-webkit-resizer { background-color: #313131;}
