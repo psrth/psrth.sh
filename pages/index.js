@@ -122,7 +122,7 @@ export default function Home() {
           <div className={styles.container__card__reading}>
 
             {readingList.map((book, id) => (
-              <div className={styles.read__card}>
+              <div key={book.id} className={styles.read__card}>
                 <h3 className={styles.read__card__h}>{book.title}</h3>
                 <p className={styles.read__card__p}>{book.author}</p>
               </div>
@@ -143,28 +143,28 @@ export default function Home() {
           
           <div className={styles.container__social}>
 
-            <a href="https://github.com/psrth" target="_blank">
+            <a href="https://github.com/psrth" target="_blank" rel="noreferrer">
               <div className={styles.card__social1}>
                 <FaGithub color="white" size="20px" />
                 <p className={styles.card__text}>Github</p>
               </div>
             </a>
 
-            <a href="https://linkedin.com/in/psrth" target="_blank">
+            <a href="https://linkedin.com/in/psrth" target="_blank" rel="noreferrer">
               <div className={styles.card__social2}>
                 <FaLinkedin color="white" size="20px" />
                 <p className={styles.card__text}>LinkedIn</p>
               </div>
             </a>
 
-            <a href="https://twitter.com/psrthsharma" target="_blank">
+            <a href="https://twitter.com/psrthsharma" target="_blank" rel="noreferrer">
               <div className={styles.card__social}>
                 <FaTwitter color="white" size="20px" />
                 <p className={styles.card__text}>Twitter</p>
               </div>
             </a>
 
-            <a href="https://instagram.com/psrthsharma" target="_blank">
+            <a href="https://instagram.com/psrthsharma" target="_blank" rel="noreferrer">
               <div className={styles.card__social3}>
                 <FaInstagram color="white" size="20px" />
                 <p className={styles.card__text}>Instagram</p>
