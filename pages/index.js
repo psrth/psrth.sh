@@ -1,7 +1,5 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-
-import { readingList } from '../data/home';
+import Link from 'next/link';
 
 import { 
   FaLinkedin, 
@@ -9,8 +7,16 @@ import {
   FaTwitter,
   FaInstagram
 } from "react-icons/fa";
-import Link from 'next/link';
 
+import Divider from '../components/Global/Divider';
+import Navbar from '../components/Global/Navbar';
+import Footer from '../components/Global/Footer';
+
+import TextSection from '../components/Home/TextSection';
+import BookContainer from '../components/Home/BookContainer';
+
+import { readingList } from '../data/home';
+import styles from '../styles/Home.module.css'
 
 
 export default function Home() {
@@ -24,48 +30,13 @@ export default function Home() {
 
       <div className={styles.card}>
 
-        {/* HEADER SECTION */}
-        <div className={styles.header}>
-          <div className={styles.header__main}>
-            <img 
-              src="https://avatars.githubusercontent.com/u/45586386?v=4" 
-              className={styles.header__pp} 
-            />
-            <h1 className={styles.header__title}>Parth Sharma</h1>
-          </div>
+        <Navbar />
+        <Divider />
 
-          <div className={styles.header__navbar}>
-            <Link href="/blog">
-              <div className={styles.header__navlink}>Blog</div>
-            </Link>
-            <Link href="/resume">
-              <div className={styles.header__navlink}>Resume</div>
-            </Link>
-            <Link href="/portfolio">
-              <div className={styles.header__navlink}>Portfolio</div>
-            </Link>
-          </div>
-        </div>
-
-
-
-
-        {/* DIVIDER */}
-        <div className={styles.divider} />
-
-
-
-
-        {/* CONTENT SECTION */}
-        <div className={styles.container__content}>
-          <h2 className={styles.content__subheading}>About Me</h2>
-          <p className={styles.content__text}>
-            Hey there 👋🏻 ! I’m Parth, (aka @psrth) — a sophomore at BITS Pilani by day, and a developer+designer by night. I love building tech-based products, YOLO-ing all my money, debating, and travelling (in no particular order).
-          </p>
-        </div>
-
-
-
+        <TextSection
+          heading="About Me"
+          text="Hey there 👋🏻 ! I’m Parth, (aka @psrth) — a sophomore at BITS Pilani by day, and a developer+designer by night. I love building tech-based products, YOLO-ing all my money, debating, and travelling (in no particular order)."
+        />
 
         {/* WORK SECTION */}
         <div className={styles.container__content}>
@@ -91,36 +62,15 @@ export default function Home() {
           </div>
         </div>
 
+        <TextSection
+          heading="Learning"
+          text="Over the summer, I’ll probably be working on a couple of things — building out a few SaaS products @orangeyak, learning more about the web3 space and building with Selenium, backend arch in Node.js, and competitive coding for recruitments season."
+        />
 
-
-
-        {/* LEARNING SECTION */}
-        <div className={styles.container__content}>
-          <h2 className={styles.content__subheading}>Learning</h2>
-          <p className={styles.content__text}>
-            Over the summer, I’ll probably be working on a couple of things — building out a few SaaS products @orangeyak, learning more about the web3 space and building with Selenium, backend arch in Node.js, and competitive coding for recruitments season.
-          </p>
-        </div>
-
-
-
-        {/* READING SECTION */}
-        <div className={styles.container__content}>
-          <h2 className={styles.content__subheading}>Reading</h2>
-          <div className={styles.container__card__reading}>
-
-            {readingList.map((book, id) => (
-              <div key={book.id} className={styles.read__card}>
-                <h3 className={styles.read__card__h}>{book.title}</h3>
-                <p className={styles.read__card__p}>{book.author}</p>
-              </div>
-            ))}
-            
-          </div>
-        </div>
-
-
-
+        <BookContainer 
+          heading="Reading" 
+          books={readingList} 
+        />
 
         {/* LINKS SECTION */}
         <div className={styles.container__content}>
@@ -166,23 +116,8 @@ export default function Home() {
           </p>
         </div>
 
-
-
-
-
-         {/* DIVIDER */}
-         <div className={styles.divider} />
-
-
-
-         {/* FOOTER SECTION*/}
-         <a href="https://github.com/psrth/psrth.io" target="_blank" rel="noreferrer">
-          <div className={styles.container__footer}>
-              <p className={styles.footer__copyright}>© 2022 — All Rights Reserved</p>
-              <p className={styles.footer__sign}>Built with ❤️ using Vercel & Next.js</p>
-          </div>
-         </a>
-      
+        <Divider />
+        <Footer />
       </div>
     </div>
   )
