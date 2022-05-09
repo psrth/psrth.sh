@@ -7,7 +7,7 @@ export default function BookContainer (props) {
           <h2 className={styles.content__subheading}>{props.heading}</h2>
           <div className={styles.container__card__reading}>
             {props.books.map((book, id) => 
-              <BookCard id={id} title={book.title} author={book.author} />
+              <BookCard key={id} title={book.title} author={book.author} />
             )}
           </div>
         </div>
