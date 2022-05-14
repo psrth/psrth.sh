@@ -1,6 +1,6 @@
 .master {
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
     background: #313131;
     display: flex;
 }
@@ -26,6 +26,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  cursor: pointer;
 }
 
 .header__pp {
@@ -103,6 +104,7 @@
   color: #fff;
   font-weight: 400;
   cursor: pointer;
+  transition: all .3s ease-out;
 }
 
 .work__card__text {
@@ -114,7 +116,8 @@
 .work__card__1:hover, 
 .work__card__2:hover, 
 .work__card__3:hover {
-  box-shadow: #353535 5px 5px 5px;
+  transform: translate(0, -5px);
+  box-shadow: #353535 2px 2px 10px;
 }
 
 .work__card__2 {
@@ -144,6 +147,12 @@
   flex-direction: column;
   justify-content: flex-end;
   border-radius: 10px;
+  transition: all .3s ease-out;
+}
+
+.read__card:hover {
+  transform: translate(0, -3px);
+  box-shadow: #353535 0.1px 0.1px 10px;
 }
 
 .read__card__h {
@@ -208,6 +217,14 @@
   border-radius: 10px;
   margin: 7px 10px 7px 0;
   cursor: pointer;
+  transition: all .2s ease-out;
+}
+
+.card__social:hover,
+.card__social1:hover,
+.card__social2:hover,
+.card__social3:hover {
+  transform: translate(0, -4px);
 }
 
 /* 442E4F */
