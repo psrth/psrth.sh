@@ -4,6 +4,10 @@ const nextConfig = {
 }
 
 module.exports = {
+  i18n: {
+    locales: ["en"],
+    defaultLocale: "en",
+  },
   async redirects() {
     return [
       {
@@ -22,5 +26,5 @@ module.exports = {
         permanent: true,
       },
     ]
-  },
+  }
 }
