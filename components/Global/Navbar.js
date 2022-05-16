@@ -14,6 +14,7 @@ export default function Navbar (props) {
                   height="60px" 
                   width="60px" 
                   placeholder="blur"
+                  alt="parth sharma with a mountain dog"
                 />
               </div>
 
