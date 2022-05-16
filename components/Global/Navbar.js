@@ -1,15 +1,26 @@
 import styles from '../../styles/Home.module.css'
 import Link from 'next/link';
+import Image from 'next/image';
+import psrth from '../../public/psrth.jpg'
 
 export default function Navbar (props) {
     return (
         <div className={styles.header}>
           <Link href="/">
             <div className={styles.header__main}>
-              <img 
-                src="https://avatars.githubusercontent.com/u/45586386?v=4" 
+              <div className={styles.header__pp}>
+                <Image 
+                  src={psrth} 
+                  height="60px" 
+                  width="60px" 
+                  placeholder="blur"
+                />
+              </div>
+
+              {/* <img 
+                src={psrth}
                 className={styles.header__pp} 
-              />
+              /> */}
               <h1 className={styles.header__title}>Parth Sharma</h1>
             </div>
           </Link>
