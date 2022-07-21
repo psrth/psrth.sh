@@ -1,21 +1,30 @@
 # Parth Sharma
+
 The website and blog of Parth Sharma, a developer, designer, builder and sophomore at BITS Pilani. Live at [psrth.io](https://psrth.io). Designed using **Figma,** built using **Next.js** and deployed using **Vercel.**
 
+## Performance
+
+An excerpt from the Lighthouse Report for the site :)
+![LightHouse](https://i.imgur.com/XhvFN1W.png)
+
 ## Getting Started
+
 1. **Install Dependencies**  
-```npm install```
+   `npm install`
 2. **Run the Development Server**  
-```npm run dev```  
+   `npm run dev`
 3. **View local deployment**  
-```http://localhost:3000```
+   `http://localhost:3000`
 
 ## To Do
+
 - [ ] Integrate blog
 - [ ] Complete portfolio page
 - [ ] Link redirects (WA, Resume)
 - [ ] Spotify Integration
 
 ## Credits
+
 Design insipired by [Kabir Goel](https://kabirgoel.com/) and [aesign](https://www.aesign.me/)'s personal websites.
 
 ## About Vercel
