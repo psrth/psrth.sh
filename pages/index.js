@@ -41,7 +41,7 @@ export default function Home() {
             <Link href="/">
               <div className={styles.work__card__1}>
                 <p className={styles.work__card__text}>
-                  building a stealth startup. <br></br>stay tuned, we're
+                  building a stealth startup. <br></br>stay tuned, we&apos;re
                   launching soon :)
                 </p>
               </div>
@@ -78,7 +78,8 @@ export default function Home() {
             <Link href="https://acm.org/">
               <div className={styles.work__card__5}>
                 <p className={styles.work__card__text}>
-                  frontend software developer @ the ACM charter at BITS Pilani
+                  vice-chair + frontend developer @ the ACM chapter at BITS
+                  Pilani
                 </p>
               </div>
             </Link>
