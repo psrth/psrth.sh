@@ -1,7 +1,5 @@
-import styles from '../../styles/Home.module.css'
+import styles from "../../styles/Home.module.css";
 
-export default function Divider (props) {
-    return (
-        <div className={styles.divider} />
-    )
+export default function Divider(props) {
+  return <div className={styles.divider} />;
 }

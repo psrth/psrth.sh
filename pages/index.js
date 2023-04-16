@@ -38,11 +38,10 @@ export default function Home() {
         <div className={styles.container__content}>
           <h2 className={styles.content__subheading}>Work</h2>
           <div className={styles.container__card}>
-            <Link href="/">
+            <Link href="https://doubltap.co/">
               <div className={styles.work__card__1}>
                 <p className={styles.work__card__text}>
-                  building a stealth startup. <br></br>stay tuned, we&apos;re
-                  launching soon :)
+                  building the future of influencer marketing at doubltap.co
                 </p>
               </div>
             </Link>
