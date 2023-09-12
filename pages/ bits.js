@@ -7,7 +7,7 @@ import Footer from "../components/Global/Footer";
 import TextSection from "../components/Home/TextSection";
 import styles from "../styles/Home.module.css";
 
-export default function Portfolio() {
+export default function BITS() {
   return (
     <div className={styles.master}>
       <Head>
