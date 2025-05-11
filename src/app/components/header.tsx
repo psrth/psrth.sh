@@ -13,16 +13,24 @@ export default function Header() {
           </div>
         </Link>
         <div className="hidden md:flex flex-row items-center gap-4 mt-10">
-          <div className="text-md font-medium cursor-pointer">home</div>
-          <div className="text-md text-[var(--color-light-gray)] font-regular cursor-pointer">
-            projects
-          </div>
-          <div className="text-md text-[var(--color-light-gray)] font-regular cursor-pointer">
-            notes
-          </div>
-          <div className="text-md text-[var(--color-light-gray)] font-regular cursor-pointer">
-            contact
-          </div>
+          <Link href="/">
+            <div className="text-md font-medium cursor-pointer">home</div>
+          </Link>
+          <Link href="/projects">
+            <div className="text-md text-[var(--color-light-gray)] font-regular cursor-pointer">
+              projects
+            </div>
+          </Link>
+          <Link href="/notes">
+            <div className="text-md text-[var(--color-light-gray)] font-regular cursor-pointer">
+              notes
+            </div>
+          </Link>
+          <Link href="/contact">
+            <div className="text-md text-[var(--color-light-gray)] font-regular cursor-pointer">
+              contact
+            </div>
+          </Link>
         </div>
       </div>
     </div>
