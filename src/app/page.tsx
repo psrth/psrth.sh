@@ -1,6 +1,7 @@
-import { FiChevronRight } from "react-icons/fi";
-import Wrapper from "./components/wrapper";
 import Image from "next/image";
+import Link from "next/link";
+
+import Wrapper from "./components/wrapper";
 import GitHubCalendarCard from "./components/github-calendar";
 import {
   Heading,
@@ -9,7 +10,6 @@ import {
   BodyTextBold,
   ExperienceListItem,
 } from "./components/copy";
-import Link from "next/link";
 
 export default function Home() {
   return (
