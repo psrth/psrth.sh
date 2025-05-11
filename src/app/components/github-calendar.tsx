@@ -33,6 +33,7 @@ export default function GitHubCalendarCard() {
         transformData={selectLastHalfYear}
         hideTotalCount
         colorScheme="light"
+        style={{ overflow: "hidden" }}
         theme={customTheme}
       />
     </div>

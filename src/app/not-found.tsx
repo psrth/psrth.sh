@@ -7,9 +7,9 @@ export default function Error() {
       <Wrapper>
         <Heading>four oh four</Heading>
         <BodyText>
-          Are you sure you're in the right place? Here's a video of{" "}
+          Are you sure you&apos;re in the right place? Here&apos;s a video of{" "}
           <span className="font-medium">Fred again </span>
-          while you find out where you're headed.
+          while you find out where you&apos;re headed.
         </BodyText>
         <div className="w-full h-[315px] mx-auto mt-10 mb-20">
           <iframe

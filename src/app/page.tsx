@@ -16,32 +16,34 @@ export default function Home() {
     <div className="flex flex-col">
       <Wrapper>
         <Heading>
-          Hey, I'm Parth. I'm a designer and engineer, <br></br>and I build
+          Hey, I&apos;m Parth. I&apos;m a designer and engineer, and I build
           products for the internet.
         </Heading>
         <BodyText>
-          I'm pretty good at taking complex problems and one-shotting a tech
-          solution for them in a weekend. While that might sound cool, it's led
-          me into some pretty interesting situations:
+          I&apos;m pretty good at taking complex problems and one-shotting a
+          tech solution for them in a weekend. While that might sound cool,
+          it&apos;s led me into some pretty interesting situations:
         </BodyText>
         <ListItem>
           getting <i>lost</i> on a midnight hike with only a can of celsius and
           Llama-3B on a battery-powered RPi
         </ListItem>
         <ListItem>
-          accidentally setting fire to my friend's 2012 Alienware because the
-          entire Cannes Film Festival was pinging our server.
+          accidentally setting fire to my friend&apos;s 2012 Alienware because
+          the entire Cannes Film Festival was pinging our server.
         </ListItem>
-        <ListItem>that time Virat Kohli tweeted something I'd built</ListItem>
+        <ListItem>
+          that time Virat Kohli tweeted something I&apos;d built
+        </ListItem>
         <BodyTextBold>
-          I'm currently splitting my time leading tech for a consulting firm in
-          New York, and surfing at Point Dume State Beach.
+          I&apos;m currently splitting my time leading tech for a consulting
+          firm in New York, and surfing at Point Dume State Beach.
         </BodyTextBold>
       </Wrapper>
       <Image
         src="/life.png"
         alt="a picture of life right now"
-        width={1100}
+        width={1024}
         height={550}
         className="my-10"
       />
@@ -64,8 +66,8 @@ export default function Home() {
         </ExperienceListItem>
         <GitHubCalendarCard />
         <BodyText>
-          If you’re just hanging out here, feel free to check out some of the
-          things I’ve worked on{" "}
+          If you&apos;re just hanging out here, feel free to check out some of
+          the things I&apos;ve worked on{" "}
           <Link href="/projects">
             <span className="font-medium text-[var(--color-light-gray)]">
               (projects)
@@ -77,8 +79,8 @@ export default function Home() {
               (notes)
             </span>
           </Link>
-          . Alternatively, feel free to reach out — I’m always on the lookout
-          for interesting problems to work on / cool people to work with{" "}
+          . Alternatively, feel free to reach out — I&apos;m always on the
+          lookout for interesting problems to work on / cool people to work with{" "}
           <Link href="/contact">
             <span className="font-medium text-[var(--color-light-gray)]">
               (contact)
