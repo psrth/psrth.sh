@@ -1,4 +1,12 @@
-export const projects = [
+export interface Project {
+  date: string;
+  title: string;
+  image: string | null;
+  description: string;
+  links: Array<{ label: string; url: string }>;
+}
+
+export const projects: Project[] = [
   {
     date: "2025-05-11",
     title: "Pulsespot AI",
