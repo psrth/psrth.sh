@@ -58,6 +58,7 @@ export async function generateStaticParams() {
       }));
   } catch (error) {
     console.error("Error reading directory:", error);
+    return [];
   }
 }
 
