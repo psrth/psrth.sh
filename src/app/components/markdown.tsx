@@ -5,10 +5,13 @@ interface ElementProps {
   className?: string;
 }
 
-// Title component with styled headings
+// ----------------------
+// BASIC TEXT COMPONENTS
+// ----------------------
+
 export const H1 = ({ children, className = "" }: ElementProps) => (
   <h1
-    className={`text-[28px]/8 md:text-[32px]/12 font-bold mt-8 mb-4 ${className}`}
+    className={`text-[28px]/8 md:text-[32px]/12 w-[90%] md:w-[620px] font-tiempos tracking-tight ${className}`}
   >
     {children}
   </h1>
@@ -16,31 +19,110 @@ export const H1 = ({ children, className = "" }: ElementProps) => (
 
 export const H2 = ({ children, className = "" }: ElementProps) => (
   <h2
-    className={`text-[22px]/7 md:text-[24px]/8 font-semibold mt-8 mb-3 border-b pb-1 border-[var(--color-light-gray)] ${className}`}
+    className={`text-[22px]/7 md:text-[24px]/8 font-medium mt-16 mb-3 text-[var(--color-gray)]   ${className}`}
   >
     {children}
+    <div className="flex h-[2px] w-full bg-[var(--color-light-gray)]  my-2 opacity-20" />
   </h2>
 );
 
 export const H3 = ({ children, className = "" }: ElementProps) => (
   <h3
-    className={`text-[18px]/6 md:text-[20px]/7 font-medium mt-5 mb-2 ${className}`}
+    className={`text-[14px]/6 md:text-[16px]/7 font-regular mt-2 mb-10 text-[var(--color-light-gray)] ${className}`}
   >
     {children}
   </h3>
 );
 
-export const Paragraph = ({ children, className = "" }: ElementProps) => (
-  <p
-    className={`text-[16px]/7 md:text-[18px]/8 mb-4 w-[90%] md:w-[600px] text-[var(--color-gray)] ${className}`}
+export const Paragraph = ({ children, className = "" }: ElementProps) => {
+  // fun fact - images are rendered inside paragraphs in markdown
+  // but next throws a hydration error for p <descendant> p
+  // so we need to override the default behavior
+  const containsOnlyImage = React.Children.toArray(children).some(
+    (child) =>
+      React.isValidElement(child) &&
+      (child.type === MDXImage || child.type === "img")
+  );
+
+  if (containsOnlyImage) {
+    return <>{children}</>;
+  }
+
+  //
+  return (
+    <p
+      className={`text-[16px]/7 md:text-[18px]/8 my-2 w-[90%] md:w-[600px] text-[var(--color-gray)] ${className}`}
+    >
+      {children}
+    </p>
+  );
+};
+
+// ----------------------
+// IMAGE COMPONENT
+// ----------------------
+export const MDXImage = ({
+  src,
+  alt,
+  width = 740,
+  height,
+  className = "",
+}: {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  className?: string;
+}) => (
+  <div className="flex flex-col w-full items-center">
+    <div className="my-6 w-[100%] md:w-[90%] ">
+      <img
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        className={`rounded-md w-full ${className}`}
+      />
+      {alt && (
+        <p className="text-[14px] text-[var(--color-light-gray)] mt-2 text-center">
+          {alt}
+        </p>
+      )}
+    </div>
+  </div>
+);
+
+// ----------------------
+// SPECIAL TEXT COMPONENTS
+// ----------------------
+export const Link = ({
+  children,
+  className = "",
+  ...props
+}: ElementProps & React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
+  <a
+    className={`text-[var(--color-link-blue)] font-medium hover:underline ${className}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    {...props}
   >
     {children}
-  </p>
+  </a>
+);
+
+export const Table = ({ children, className = "" }: ElementProps) => (
+  <div className="overflow-x-auto my-6 w-full">
+    <table
+      className={`min-w-full divide-y divide-[var(--color-light-gray)]/30 ${className}`}
+    >
+      {children}
+    </table>
+  </div>
 );
 
 export const Blockquote = ({ children, className = "" }: ElementProps) => (
   <blockquote
-    className={`border-l-4 border-[var(--color-light-gray)] pl-4 py-1 my-4 bg-[#f9fafb] text-[var(--color-gray)] rounded-r w-[90%] md:w-[600px] ${className}`}
+    className={`border-l-4 border-[var(--color-link-blue)] italic my-12 pl-4 py-1 bg-[#f9fafb] text-[var(--color-gray)] rounded-r w-[95%] md:w-[650px] ${className}`}
   >
     {children}
   </blockquote>
@@ -66,6 +148,10 @@ export const ListItem = ({ children, className = "" }: ElementProps) => (
   <li className={`mb-2 ${className}`}>{children}</li>
 );
 
+// ----------------------
+// CODE COMPONENTS
+// ----------------------
+
 export const InlineCode = ({ children, className = "" }: ElementProps) => (
   <code
     className={`bg-[#f2f2f2] rounded px-1 py-0.5 font-mono text-[14px] text-[#d44d6e] ${className}`}
@@ -78,83 +164,74 @@ interface CodeBlockProps extends ElementProps {
   className?: string;
 }
 
-// Handle code blocks with language specification
-export const CodeBlock = ({ children, className = "" }: CodeBlockProps) => {
-  // Extract language from className (format: "language-js", "language-jsx", etc.)
+export const Pre = (props: React.ComponentPropsWithRef<"pre">) => {
+  let className = "";
+
+  if (
+    props.children &&
+    typeof props.children === "object" &&
+    props.children !== null &&
+    "props" in props.children
+  ) {
+    const childProps = props.children.props as Record<string, any>;
+    if (childProps && typeof childProps.className === "string") {
+      className = childProps.className;
+    }
+  }
+
   const language = className?.includes("language-")
-    ? className.split("language-")[1]
+    ? className.split("language-")[1]?.split(" ")[0]
     : "";
 
-  // Map languages to nicer display names
   const languageMap: Record<string, string> = {
-    js: "JavaScript",
-    jsx: "React JSX",
-    ts: "TypeScript",
-    tsx: "React TSX",
-    bash: "Terminal",
-    sh: "Shell",
-    css: "CSS",
-    html: "HTML",
-    json: "JSON",
-    markdown: "Markdown",
-    md: "Markdown",
+    js: "javascript",
+    jsx: "react",
+    ts: "typescript",
+    tsx: "react",
+    bash: "bash",
+    sh: "bash",
+    css: "css",
+    html: "html",
+    json: "json",
+    markdown: "markdown",
+    md: "markdown",
+    javascript: "javascript",
   };
 
   const displayLanguage = language ? languageMap[language] || language : "";
 
+  const languageDisplay = displayLanguage || "idk";
+
   return (
-    <div className="relative group my-6 w-[90%] md:w-[600px]">
-      {displayLanguage && (
-        <div className="absolute right-4 top-3 text-xs bg-[#f2f2f2] px-2 py-0.5 rounded text-[var(--color-gray)] font-mono">
-          {displayLanguage}
+    <div className="relative group my-6">
+      <pre className="p-5 pt-10 rounded-lg overflow-x-auto font-mono text-[14px] leading-relaxed bg-[#f9fafb]">
+        <div className="absolute right-4 top-3 text-xs bg-[#f2f2f2] px-2 py-0.5 rounded text-[var(--color-gray)] font-mono z-100">
+          {languageDisplay}
         </div>
-      )}
-      <pre
-        className={`bg-[#f9fafb] p-5 pt-10 rounded-lg overflow-x-auto font-mono text-[14px] leading-relaxed ${className}`}
-      >
-        {children}
+        {props.children}
       </pre>
     </div>
   );
 };
 
-export const Link = ({
-  children,
-  className = "",
-  ...props
-}: ElementProps & React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
-  <a
-    className={`text-blue-600 hover:underline ${className}`}
-    target="_blank"
-    rel="noopener noreferrer"
-    {...props}
-  >
-    {children}
-  </a>
-);
+export const CodeBlock = ({ children, className = "" }: CodeBlockProps) => {
+  return (
+    <div className="relative group my-6">
+      <pre
+        className={`p-5 pt-10 rounded-lg overflow-x-auto font-mono text-[14px] leading-relaxed`}
+      >
+        <code className={className}>{children}</code>
+      </pre>
+    </div>
+  );
+};
 
-// Component to handle date display
-export const NoteDate = ({ children, className = "" }: ElementProps) => (
-  <div
-    className={`text-[14px] text-[var(--color-light-gray)] mb-6 ${className}`}
-  >
-    {children}
-  </div>
-);
-
-// Table components
-export const Table = ({ children, className = "" }: ElementProps) => (
-  <div className="overflow-x-auto my-6 w-[90%] md:w-[600px]">
-    <table
-      className={`min-w-full divide-y divide-[var(--color-light-gray)] ${className}`}
-    >
-      {children}
-    </table>
-  </div>
-);
+// ----------------------
+// TABLE COMPONENTS
+// ----------------------
 
 export const TableHead = ({ children, className = "" }: ElementProps) => (
-  <thead className={`bg-[#f9fafb] ${className}`}>{children}</thead>
+  <thead className={`${className}`}>{children}</thead>
 );
 
 export const TableRow = ({ children, className = "" }: ElementProps) => (
@@ -177,52 +254,36 @@ export const TableCell = ({ children, className = "" }: ElementProps) => (
   </td>
 );
 
-// Image component for markdown
-export const MDXImage = ({
-  src,
-  alt,
-  width = 600,
-  height,
-  className = "",
-}: {
-  src: string;
-  alt: string;
-  width?: number;
-  height?: number;
-  className?: string;
-}) => (
-  <div className="my-6 w-[90%] md:w-[600px]">
-    <img
-      src={src}
-      alt={alt}
-      width={width}
-      height={height}
-      className={`rounded-md w-full ${className}`}
-    />
-    {alt && (
-      <p className="text-[14px] text-[var(--color-light-gray)] mt-2 text-center">
-        {alt}
-      </p>
-    )}
-  </div>
+export const TableBody = ({ children, className = "" }: ElementProps) => (
+  <tbody
+    className={`divide-y divide-[var(--color-light-gray)]/30 ${className}`}
+  >
+    {children}
+  </tbody>
 );
 
 export const MDXComponents = {
+  // text components
   h1: H1,
   h2: H2,
   h3: H3,
   p: Paragraph,
+  // image component
+  img: MDXImage,
+  // special text components
+  a: Link,
   blockquote: Blockquote,
   ul: UnorderedList,
   ol: OrderedList,
   li: ListItem,
+  // code components
   code: InlineCode,
-  pre: CodeBlock,
-  a: Link,
+  pre: Pre,
+  // table components
   table: Table,
   thead: TableHead,
+  tbody: TableBody,
   tr: TableRow,
   th: TableHeader,
   td: TableCell,
-  img: MDXImage,
 };

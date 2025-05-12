@@ -1,10 +1,10 @@
 # You Can Just Self-Host Next.js
 
-October 11, 2025
+### October 11, 2025
 
 Next.js has become a powerful framework for building modern web applications, but many developers don't realize how straightforward it can be to self-host your Next.js applications.
 
-![A server rack representing self-hosting infrastructure](https://4kwallpapers.com/images/wallpapers/macos-big-sur-apple-layers-fluidic-colorful-wwdc-stock--1455.jpg)
+![a server rack representing self-hosting infrastructure](https://4kwallpapers.com/images/wallpapers/macos-big-sur-apple-layers-fluidic-colorful-wwdc-stock--1455.jpg)
 
 ## Why Self-Host?
 
@@ -29,7 +29,7 @@ pm2 start npm --name "my-nextjs-app" -- start
 
 For handling environment variables, create a `.env.production` file:
 
-```js
+```javascript
 // Load environment variables in next.config.js
 const nextConfig = {
   env: {
@@ -43,7 +43,20 @@ const nextConfig = {
 
 Self-hosting doesn't have to be complicated, and for many projects, it's the perfect solution.
 
-### Additional Resources
+## Deployment Options Comparison
+
+| Feature                   | Self-Hosting                    | Vercel                 | AWS Amplify            | Netlify                |
+| ------------------------- | ------------------------------- | ---------------------- | ---------------------- | ---------------------- |
+| Cost                      | Variable (pay for what you use) | Free tier + paid plans | Free tier + paid plans | Free tier + paid plans |
+| Control                   | Complete                        | Limited                | Limited                | Limited                |
+| Setup Complexity          | Moderate                        | Very Low               | Low                    | Low                    |
+| CI/CD                     | Manual setup required           | Built-in               | Built-in               | Built-in               |
+| Custom Domain             | Yes (manual setup)              | Yes                    | Yes                    | Yes                    |
+| SSL                       | Manual setup                    | Automatic              | Automatic              | Automatic              |
+| Edge Functions            | Self-managed                    | Built-in               | Limited                | Built-in               |
+| Infrastructure Management | Manual                          | Managed                | Managed                | Managed                |
+
+## Additional Resources
 
 - [Next.js Documentation](https://nextjs.org/docs/deployment)
 - [PM2 Documentation](https://pm2.keymetrics.io/docs/usage/quick-start/)

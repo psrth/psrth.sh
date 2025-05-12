@@ -17,6 +17,7 @@ html {
   --color-teal: #8097b4;
   --color-gray: #454545;
   --color-light-gray: #bebebe;
+  --color-link-blue: #3e90cd;
 }
 
 @media (prefers-color-scheme: light) {

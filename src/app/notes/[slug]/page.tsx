@@ -4,24 +4,21 @@ import { compileMDX } from "next-mdx-remote/rsc";
 import Wrapper from "@/app/components/wrapper";
 import { Metadata } from "next";
 import { MDXComponents } from "@/app/components/markdown";
+import rehypeStarryNight from "rehype-starry-night";
+import { notFound } from "next/navigation";
+import remarkGfm from "remark-gfm";
 
 interface NoteProps {
   params: {
     slug: string;
   };
 }
-
-// Helper to get the title from the markdown content
 function extractTitle(content: string): string {
-  // Look for the first h1 (# Title)
   const titleMatch = content.match(/^# (.*$)/m);
   if (titleMatch) return titleMatch[1];
-
-  // Fallback: convert slug to title
   return slugToTitle(content);
 }
 
-// Convert slug to title format
 function slugToTitle(slug: string): string {
   return slug
     .split("-")
@@ -32,9 +29,9 @@ function slugToTitle(slug: string): string {
 export async function generateMetadata({
   params,
 }: NoteProps): Promise<Metadata> {
-  const { slug } = params;
+  const resolvedParams = await params;
+  const { slug } = resolvedParams;
   const source = await getNote(slug);
-
   const title = extractTitle(source);
 
   return {
@@ -77,23 +74,33 @@ async function getNote(slug: string) {
     const source = fs.readFileSync(filePath, "utf8");
     return source;
   } catch (error) {
-    return `# Note not found\n\nThe note with slug "${slug}" does not exist yet.`;
+    notFound();
   }
 }
 
 async function Note({ params }: NoteProps) {
-  const { slug } = params;
+  const resolvedParams = await params;
+  const { slug } = resolvedParams;
   const source = await getNote(slug);
 
   const { content } = await compileMDX({
     source,
-    options: { parseFrontmatter: true },
+    options: {
+      parseFrontmatter: true,
+      mdxOptions: {
+        remarkPlugins: [remarkGfm],
+        rehypePlugins: [[rehypeStarryNight]],
+        format: "mdx",
+      },
+    },
     components: MDXComponents,
   });
 
   return (
     <Wrapper>
-      <article className="prose prose-zinc max-w-none">{content}</article>
+      <article className="prose max-w-none prose-pre:p-0 prose-pre:bg-transparent prose-pre:m-0">
+        {content}
+      </article>
     </Wrapper>
   );
 }

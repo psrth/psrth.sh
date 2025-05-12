@@ -15,7 +15,9 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-github-calendar": "^4.5.7",
-    "react-icons": "^5.5.0"
+    "react-icons": "^5.5.0",
+    "rehype-starry-night": "^2.2.0",
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

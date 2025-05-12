@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { unstable_ViewTransition as ViewTransition } from "react";
 
 import "./globals.css";
+import "./styles/syntax-highlighting.css";
 
 import Header from "./components/header";
 import Footer from "./components/footer";
@@ -17,6 +18,11 @@ const soehne = localFont({
     {
       path: "../../public/fonts/soehne-kraftig.woff2",
       weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/soehne-kraftig.woff2",
+      weight: "600",
       style: "normal",
     },
   ],

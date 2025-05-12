@@ -1,0 +1,120 @@
+/* GitHub-like syntax highlighting styles for rehype-starry-night */
+
+/* Code block base styles */
+pre {
+  background-color: #f9fafb; /* Light theme background */
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+  position: relative; /* Ensure positioned elements inside work correctly */
+}
+
+/* Override inline code styles when inside pre blocks */
+pre code {
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
+/* Ensure language tag is visible */
+pre > div {
+  position: absolute !important;
+  z-index: 50 !important;
+  opacity: 1 !important;
+  pointer-events: none;
+}
+
+/* Token styles */
+.pl-k {
+  color: #cf222e; /* Keyword */
+}
+
+.pl-en {
+  color: #8250df; /* Entity */
+}
+
+.pl-s {
+  color: #0a3069; /* String */
+}
+
+.pl-pds {
+  color: #0a3069; /* Punctuation Definition String */
+}
+
+.pl-c {
+  color: #6e7781; /* Comment */
+}
+
+.pl-v {
+  color: #953800; /* Variable */
+}
+
+.pl-smi {
+  color: #24292f; /* Variable parameter */
+}
+
+.pl-c1 {
+  color: #0550ae; /* Constant */
+}
+
+.pl-kos {
+  color: #24292f; /* Punctuation */
+}
+
+.pl-s1 {
+  color: #24292f; /* String content */
+}
+
+.pl-e {
+  color: #953800; /* Entity name */
+}
+
+.pl-ent {
+  color: #116329; /* HTML/XML tag */
+}
+
+.pl-pse {
+  color: #0550ae; /* Punctuation section end */
+}
+
+.pl-mdr {
+  color: #8250df; /* Meta diff range */
+}
+
+.pl-sr {
+  color: #116329; /* String regex */
+}
+
+.pl-mdh {
+  color: #8250df; /* Meta diff header */
+}
+
+.pl-mh {
+  color: #0550ae; /* Markup heading */
+}
+
+.pl-mi {
+  color: #24292f; /* Markup italic */
+}
+
+.pl-mb {
+  color: #24292f; /* Markup bold */
+}
+
+.pl-md {
+  color: #cf222e; /* Markup deleted */
+}
+
+.pl-mi1 {
+  color: #116329; /* Markup inserted */
+}
+
+.pl-mc {
+  color: #e36209; /* Markup changed */
+}
