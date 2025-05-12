@@ -5,11 +5,11 @@ export default function Error() {
   return (
     <div className="flex flex-col items-center">
       <Wrapper>
-        <Heading>four oh four</Heading>
+        <Heading>404 :/</Heading>
         <BodyText>
           Are you sure you&apos;re in the right place? Here&apos;s a video of{" "}
           <span className="font-medium">Fred again </span>
-          while you find out where you&apos;re headed.
+          while you figure out where you&apos;re headed.
         </BodyText>
         <div className="flex flex-col w-full h-auto mx-auto mt-10 mb-20 justify-center items-center">
           <iframe
