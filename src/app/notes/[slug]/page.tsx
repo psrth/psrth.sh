@@ -74,6 +74,7 @@ async function getNote(slug: string) {
     const source = fs.readFileSync(filePath, "utf8");
     return source;
   } catch (error) {
+    console.error("Error reading file:", error);
     notFound();
   }
 }

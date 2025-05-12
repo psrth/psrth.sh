@@ -164,6 +164,11 @@ interface CodeBlockProps extends ElementProps {
   className?: string;
 }
 
+interface PreChildProps {
+  className?: string;
+  [key: string]: unknown;
+}
+
 export const Pre = (props: React.ComponentPropsWithRef<"pre">) => {
   let className = "";
 
@@ -173,7 +178,7 @@ export const Pre = (props: React.ComponentPropsWithRef<"pre">) => {
     props.children !== null &&
     "props" in props.children
   ) {
-    const childProps = props.children.props as Record<string, any>;
+    const childProps = props.children.props as PreChildProps;
     if (childProps && typeof childProps.className === "string") {
       className = childProps.className;
     }
