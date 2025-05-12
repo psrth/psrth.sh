@@ -1,11 +1,34 @@
 "use client";
 
+import React, { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 export default function Header() {
   const pathname = usePathname();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const activeItemRef = useRef<HTMLAnchorElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+
+    if (pathname && container) {
+      const activeItem = activeItemRef.current;
+
+      if (activeItem) {
+        const { offsetLeft, offsetWidth } = activeItem;
+
+        const clipLeft = offsetLeft;
+        const clipRight = offsetLeft + offsetWidth;
+        container.style.clipPath = `inset(0 ${Number(
+          100 - (clipRight / container.offsetWidth) * 100
+        ).toFixed()}% 0 ${Number(
+          (clipLeft / container.offsetWidth) * 100
+        ).toFixed()}%)`;
+      }
+    }
+  }, [pathname]);
 
   return (
     <div className="flex flex-col w-full font-soehne">
@@ -17,15 +40,39 @@ export default function Header() {
             <div className="text-md font-medium">psrth</div>
           </div>
         </Link>
-        <div className="flex flex-row items-center mt-4 md:mt-0">
-          <HeaderItem href="/" label="home" currentPath={pathname} />
-          <HeaderItem
-            href="/projects"
-            label="projects"
-            currentPath={pathname}
+        <div className="flex flex-row items-center mt-4 md:mt-0 relative">
+          <div
+            aria-hidden="true"
+            className="absolute top-0 left-0 w-full h-full bg-gray-50 transition-all duration-300 ease-in-out z-0"
+            ref={containerRef}
           />
-          <HeaderItem href="/notes" label="notes" currentPath={pathname} />
-          <HeaderItem href="/contact" label="contact" currentPath={pathname} />
+          <div className="flex flex-row items-center relative z-10">
+            <HeaderItem
+              href="/"
+              label="home"
+              currentPath={pathname}
+              ref={pathname === "/" ? activeItemRef : null}
+            />
+            <HeaderItem
+              href="/projects"
+              label="projects"
+              currentPath={pathname}
+              ref={pathname === "/projects" ? activeItemRef : null}
+            />
+            <HeaderItem
+              href="/notes"
+              label="notes"
+              currentPath={pathname}
+              ref={pathname.includes("/notes") ? activeItemRef : null}
+              isActive={pathname.includes("/notes")}
+            />
+            <HeaderItem
+              href="/contact"
+              label="contact"
+              currentPath={pathname}
+              ref={pathname === "/contact" ? activeItemRef : null}
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -36,28 +83,35 @@ interface HeaderItemProps {
   href: string;
   label: string;
   currentPath: string;
+  ref?: React.Ref<HTMLAnchorElement>;
+  isActive?: boolean;
 }
 
-function HeaderItem({ href, label, currentPath }: HeaderItemProps) {
-  const isActive = currentPath === href;
+const HeaderItem = React.forwardRef<HTMLAnchorElement, HeaderItemProps>(
+  function HeaderItem(
+    { href, label, currentPath, isActive: propIsActive },
+    ref
+  ) {
+    const isActive =
+      propIsActive !== undefined ? propIsActive : currentPath === href;
 
-  return (
-    <Link
-      href={href}
-      prefetch={true}
-      className={`px-3 py-1 cursor-pointer ${
-        isActive ? "bg-gray-50" : "bg-transparent"
-      }`}
-    >
-      <p
-        className={`text-md ${
-          isActive
-            ? "text-[var(--color-gray)] font-medium"
-            : "text-[var(--color-light-gray)] font-regular"
-        }`}
+    return (
+      <Link
+        href={href}
+        prefetch={true}
+        ref={ref}
+        className="px-3 py-1 cursor-pointer"
       >
-        {label}
-      </p>
-    </Link>
-  );
-}
+        <p
+          className={`text-md ${
+            isActive
+              ? "text-[var(--color-gray)] font-medium"
+              : "text-[var(--color-light-gray)] font-regular"
+          }`}
+        >
+          {label}
+        </p>
+      </Link>
+    );
+  }
+);
