@@ -1,4 +1,9 @@
 import { Metadata } from "next";
+import Image from "next/image";
+
+import { FiExternalLink } from "react-icons/fi";
+
+import { projects } from "./projects";
 import Heading from "../components/copy";
 import Wrapper from "../components/wrapper";
 
@@ -8,11 +13,112 @@ export const metadata: Metadata = {
 };
 
 function Projects() {
+  const projectsByYear: Record<string, any[]> = projects.reduce(
+    (acc: Record<string, any[]>, project) => {
+      const year = new Date(project.date).getFullYear().toString();
+      if (!acc[year]) {
+        acc[year] = [];
+      }
+      acc[year].push(project);
+      return acc;
+    },
+    {}
+  );
+
+  const years = Object.keys(projectsByYear).sort(
+    (a, b) => Number(b) - Number(a)
+  );
+
   return (
     <Wrapper>
       <Heading>Projects</Heading>
+      <div className="flex flex-col gap-12 mt-10">
+        {years.map((year) => (
+          <div key={year} className="flex flex-col md:flex-row w-full gap-8">
+            <YearTimeline year={year} />
+            <div className="flex flex-col gap-8 mb-10">
+              {projectsByYear[year].map((project, index: number) => (
+                <ProjectCard
+                  key={`${project.date}-${index}`}
+                  project={project}
+                />
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
     </Wrapper>
   );
 }
 
 export default Projects;
+
+interface YearTimelineProps {
+  year: string;
+}
+
+function YearTimeline({ year }: YearTimelineProps) {
+  return (
+    <div className="w-full md:w-20 flex flex-col items-start md:items-center">
+      <p className="text-[18px] text-[var(--color-light-gray)]">{year}</p>
+      <div className="hidden md:block w-[2px] mt-2 h-full bg-[var(--color-light-gray)] opacity-30"></div>
+    </div>
+  );
+}
+
+interface ProjectCardProps {
+  project: {
+    title: string;
+    image?: string;
+    description: string;
+    links: Array<{ url: string; label: string }>;
+  };
+}
+
+function ProjectCard({ project }: ProjectCardProps) {
+  return (
+    <div className="flex flex-col gap-2">
+      <h2 className="text-[22px] mt-10 font-medium text-[var(--color-gray)]">
+        {project.title}
+      </h2>
+      {project.image && (
+        <Image
+          src={project.image}
+          alt={project.title}
+          width={600}
+          height={200}
+          className="my-2"
+        />
+      )}
+      <p className="text-[16px]/7 md:text-[18px]/8 font-regular w-[90%] md:w-[600px] mt-2 text-[var(--color-gray)]">
+        {project.description}
+      </p>
+      <ProjectLinks links={project.links} />
+    </div>
+  );
+}
+
+interface ProjectLinksProps {
+  links: Array<{ url: string; label: string }>;
+}
+
+function ProjectLinks({ links }: ProjectLinksProps) {
+  return (
+    <div className="flex flex-row gap-2 mt-2">
+      {links.map((link) => (
+        <div className="flex flex-row gap-2 items-center" key={link.label}>
+          <a
+            key={link.label}
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[var(--color-link-blue)] font-medium text-[16px]/7 md:text-[18px]/8"
+          >
+            {link.label}
+          </a>
+          <FiExternalLink className="text-[var(--color-link-blue)] opacity-80" />
+        </div>
+      ))}
+    </div>
+  );
+}
