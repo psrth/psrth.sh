@@ -1,0 +1,49 @@
+# You Can Just Self-Host Next.js
+
+October 11, 2025
+
+Next.js has become a powerful framework for building modern web applications, but many developers don't realize how straightforward it can be to self-host your Next.js applications.
+
+![A server rack representing self-hosting infrastructure](https://4kwallpapers.com/images/wallpapers/macos-big-sur-apple-layers-fluidic-colorful-wwdc-stock--1455.jpg)
+
+## Why Self-Host?
+
+- **Control**: Complete control over your infrastructure
+- **Cost Efficiency**: Potentially lower costs for high-traffic sites
+- **Performance**: Optimize for your specific use cases
+- **Privacy**: Keep your data and code on your own servers
+
+> Most developers assume deployment requires Vercel, but self-hosting gives you complete control over your infrastructure.
+
+## How to Self-Host Next.js
+
+1. Build your application with `next build`
+2. Use `next start` to run a production server
+3. Set up a process manager like PM2
+4. Configure your web server (Nginx/Apache) as a reverse proxy
+
+```bash
+# Example PM2 setup
+pm2 start npm --name "my-nextjs-app" -- start
+```
+
+For handling environment variables, create a `.env.production` file:
+
+```js
+// Load environment variables in next.config.js
+const nextConfig = {
+  env: {
+    API_URL: process.env.API_URL,
+    ANALYTICS_ID: process.env.ANALYTICS_ID,
+  },
+};
+```
+
+![Next.js deployment architecture diagram](https://4kwallpapers.com/images/wallpapers/macos-big-sur-apple-layers-fluidic-colorful-wwdc-stock--1455.jpg)
+
+Self-hosting doesn't have to be complicated, and for many projects, it's the perfect solution.
+
+### Additional Resources
+
+- [Next.js Documentation](https://nextjs.org/docs/deployment)
+- [PM2 Documentation](https://pm2.keymetrics.io/docs/usage/quick-start/)
