@@ -10,14 +10,14 @@ export default function Header() {
   return (
     <div className="flex flex-col w-full font-soehne">
       <div className="bg-[var(--color-teal)] h-4 w-full" />
-      <div className="flex flex-row w-[90vw] md:w-[740px] mx-auto justify-between align-bottom">
+      <div className="flex flex-col md:flex-row w-[95vw] md:w-[740px] mx-auto justify-between align-bottom mt-10">
         <Link href="/">
-          <div className="flex flex-row items-center gap-3 mt-10">
+          <div className="flex flex-row items-center gap-3 ml-3 md:ml-0">
             <Image src="/psrth.png" alt="logo" width={24} height={24} />
             <div className="text-md font-medium">psrth</div>
           </div>
         </Link>
-        <div className="hidden md:flex flex-row items-center mt-10">
+        <div className="flex flex-row items-center mt-4 md:mt-0">
           <HeaderItem href="/" label="home" currentPath={pathname} />
           <HeaderItem
             href="/projects"

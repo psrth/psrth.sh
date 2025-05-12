@@ -48,7 +48,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${soehne.variable} ${tiempos.variable} antialiased`}>
         <Header />
-        <main className="flex flex-col w-[100vw] lg:w-[1024px] mx-auto mt-25 bg-white">
+        <main className="flex flex-col w-[100vw] lg:w-[1024px] min-h-[65vh] mx-auto mt-25 bg-white">
           {children}
         </main>
         <Footer />

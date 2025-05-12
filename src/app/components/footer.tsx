@@ -10,15 +10,15 @@ export default function Footer() {
             <span className="relative inline-flex w-2 h-2 md:w-[10px] md:h-[10px] rounded-full bg-red-500" />
           </div>
 
-          <div className="text-[16px]/8 md:text-[18px]/8 font-medium text-[var(--color-gray)]">
+          <div className="text-[16px]/8 md:text-[18px]/8 font-medium text-[var(--color-gray)] mr-2 md:mr-0">
             live from los angeles, ca
           </div>
-          <div className="text-[14px]/8 md:text-[18px]/8 font-regular text-[var(--color-light-gray)]">
-            2025
+          <div className="text-[16px]/8 md:text-[18px]/8 font-regular text-[var(--color-light-gray)]">
+            2025 / source
           </div>
         </div>
 
-        <div className="flex flex-row gap-4">
+        <div className="flex flex-row gap-4 mt-2 md:mt-0">
           <a
             href="https://github.com/psrth"
             target="_blank"
