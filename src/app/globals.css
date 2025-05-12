@@ -6,7 +6,7 @@
 }
 
 html {
-  background-color: var(--color-teal);
+  background-color: #ffffff;
 }
 
 @theme inline {
@@ -41,4 +41,40 @@ body {
 
 .github-calendar rect {
   stroke: none !important;
+}
+
+.page-content {
+  view-transition-name: page-content;
+  contain: paint;
+}
+
+::view-transition-group(page-content) {
+  animation: none;
+  transform: none !important;
+}
+
+::view-transition-old(page-content),
+::view-transition-new(page-content) {
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+::view-transition-old(page-content) {
+  animation: fade-out 400ms ease-in-out forwards;
+}
+
+::view-transition-new(page-content) {
+  animation: fade-in 400ms ease-in-out 400ms both;
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
 }

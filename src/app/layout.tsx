@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { unstable_ViewTransition as ViewTransition } from "react";
 
 import "./globals.css";
 
@@ -42,8 +43,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${soehne.variable} ${tiempos.variable} antialiased`}>
         <Header />
-        <main className="flex flex-col w-[100vw] lg:w-[1024px] mx-auto mt-25">
-          {children}
+        <main className="flex flex-col w-[100vw] lg:w-[1024px] mx-auto mt-25 bg-white">
+          <div className="page-content">
+            <ViewTransition>{children}</ViewTransition>
+          </div>
         </main>
         <Footer />
       </body>

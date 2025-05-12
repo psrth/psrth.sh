@@ -14,8 +14,8 @@ function Contact() {
         <div className="flex flex-col justify-between">
           <div>
             <p className="text-[16px]/7 md:text-[18px]/8 mt-0 font-regular text-[var(--color-gray)]">
-              hmu if you'd like to work together — i'm p good with next / go /
-              js / python / ai or design / product / growth.
+              hmu if you&apos;d like to work together — i&apos;m p good with
+              next / go / js / python / ai or design / product / growth.
             </p>
             <p className="text-[16px]/7 md:text-[18px]/8 font-regular mt-10 text-[var(--color-gray)]">
               or if you just want to chat.
