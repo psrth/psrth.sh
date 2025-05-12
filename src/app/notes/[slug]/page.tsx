@@ -9,9 +9,9 @@ import { notFound } from "next/navigation";
 import remarkGfm from "remark-gfm";
 
 interface NoteProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 function extractTitle(content: string): string {
   const titleMatch = content.match(/^# (.*$)/m);
