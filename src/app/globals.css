@@ -6,7 +6,7 @@
 }
 
 html {
-  background-color: #ffffff;
+  background-color: var(--color-teal);
 }
 
 @theme inline {

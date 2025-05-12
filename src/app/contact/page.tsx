@@ -8,7 +8,7 @@ function Contact() {
     <Wrapper>
       <Heading>Contact</Heading>
       <div className="flex flex-col-reverse md:flex-row w-full gap-10 justify-between mt-10">
-        <div className="flex flex-col w-full md:w-[370px] md:min-w-[370px] relative h-[600px] md:h-[500px]">
+        <div className="flex flex-col w-full md:w-[370px] md:min-w-[370px] relative h-[600px] md:h-[480px]">
           <Image src="/hi.png" alt="hi" fill style={{ objectFit: "cover" }} />
         </div>
         <div className="flex flex-col justify-between">
