@@ -52,17 +52,52 @@ export default function Home() {
           founding engineer at pulse ai (2024 - present)
         </ExperienceListItem>
         <ExperienceListItem status="current">
-          tech lead at fischer jordan (2023 - present)
+          tech lead at{" "}
+          <a
+            href="https://fischerjordan.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="decoration-[var(--color-light-gray)] underline decoration-2 underline-offset-2 [text-decoration-skip-ink:none]"
+          >
+            fischer jordan
+          </a>{" "}
+          (2023 - present)
         </ExperienceListItem>
         <ExperienceListItem status="past">
-          graduated from bits pilani, india (2024)
+          graduated from{" "}
+          <a
+            href="https://bits-pilani.ac.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="decoration-[var(--color-light-gray)]/20 underline decoration-2 underline-offset-2 [text-decoration-skip-ink:none]"
+          >
+            bits pilani, india
+          </a>{" "}
+          (2024)
         </ExperienceListItem>
         <ExperienceListItem status="past">
-          sold the tech ip for doubltap, an influencer marketing startup (2023)
+          sold the tech ip for{" "}
+          <a
+            href="https://doubltap.co"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="decoration-[var(--color-light-gray)]/20 underline decoration-2 underline-offset-2 [text-decoration-skip-ink:none]"
+          >
+            doubltap,
+          </a>{" "}
+          an influencer marketing startup (2023)
         </ExperienceListItem>
         <ExperienceListItem status="past">
-          built software for sequoia, lightspeed, and more at orange yak (2021 -
-          23)
+          built software for sequoia, lightspeed, and more at{" "}
+          <a
+            href="https://orangeyak.co"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="decoration-[var(--color-light-gray)]/20 underline decoration-2 underline-offset-2 [text-decoration-skip-ink:none]"
+          >
+            orange yak
+          </a>{" "}
+          (2021 - 23)
         </ExperienceListItem>
         <GitHubCalendarCard />
         <BodyText>
