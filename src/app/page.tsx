@@ -13,7 +13,7 @@ import {
 
 export default function Home() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col animate-fade-in">
       <Wrapper>
         <Heading>
           Hey, I&apos;m Parth. I&apos;m a designer and engineer, and I build
