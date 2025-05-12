@@ -3,6 +3,7 @@ import Image from "next/image";
 import Wrapper from "../components/wrapper";
 import Heading from "../components/copy";
 import { Metadata } from "next";
+import { FiGithub, FiLinkedin } from "react-icons/fi";
 
 export const metadata: Metadata = {
   title: "contact / psrth.sh",
