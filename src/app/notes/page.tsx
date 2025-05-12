@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 import Heading from "../components/copy";
 import Wrapper from "../components/wrapper";
 
@@ -19,8 +20,7 @@ const notes = [
     date: "2025-03-11",
   },
   {
-    title:
-      "stop being an ai doomer stop being an ai doomer stop being an ai doomer stop being an ai doomer ",
+    title: "stop being an ai doomer",
     link: "/notes/stop-being-an-ai-doomer",
     date: "2024-12-30",
   },
@@ -47,7 +47,7 @@ function Notes() {
       <Heading>Notes</Heading>
 
       {/* notes table - header */}
-      <div className="flex flex-row gap-16 mt-10">
+      <div className="hidden md:flex flex-row gap-16 mt-10">
         <p className="text-[16px]/7 md:text-[18px]/8 font-regular text-[var(--color-light-gray)] w-[50px]">
           date
         </p>
@@ -55,7 +55,7 @@ function Notes() {
           title
         </p>
       </div>
-      <div className="w-full h-[2px] bg-[var(--color-light-gray)] opacity-20 mt-3" />
+      <div className="hidden md:flex w-full h-[2px] bg-[var(--color-light-gray)] opacity-20 mt-3" />
 
       {/* notes table - core */}
       {(() => {
@@ -69,8 +69,12 @@ function Notes() {
           return (
             <div className="flex flex-col" key={note.date}>
               <Link href={note.link}>
-                <div className="flex flex-row gap-16 py-3">
-                  <p className="text-[16px]/7 md:text-[18px]/8 font-regular text-[var(--color-light-gray)] w-[50px]">
+                <div className="flex flex-col md:flex-row gap-2 md:gap-16 py-3">
+                  <p
+                    className={`text-[16px]/7 md:text-[18px]/8 font-regular text-[var(--color-light-gray)] w-[50px] ${
+                      shouldShowYear ? "mt-10 md:mt-0" : ""
+                    }`}
+                  >
                     {shouldShowYear ? year : ""}
                   </p>
                   <p className="text-[16px]/7 md:text-[18px]/8 font-regular text-[var(--color-gray)] overflow-hidden text-ellipsis whitespace-nowrap max-w-[300px] md:max-w-[500px]">
