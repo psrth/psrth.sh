@@ -59,9 +59,9 @@ interface YearTimelineProps {
 
 function YearTimeline({ year }: YearTimelineProps) {
   return (
-    <div className="w-full md:w-20 flex flex-col items-start md:items-center">
+    <div className="w-full md:w-20 gap-2 flex flex-row md:flex-col items-center">
       <p className="text-[18px] text-[var(--color-light-gray)]">{year}</p>
-      <div className="hidden md:block w-[2px] mt-2 h-full bg-[var(--color-light-gray)] opacity-30"></div>
+      <div className="w-full h-[2px] md:h-full md:w-[2px] md:mt-2  bg-[var(--color-light-gray)] opacity-30"></div>
     </div>
   );
 }
@@ -78,7 +78,7 @@ interface ProjectCardProps {
 function ProjectCard({ project }: ProjectCardProps) {
   return (
     <div className="flex flex-col gap-2">
-      <h2 className="text-[22px] mt-10 font-medium text-[var(--color-gray)]">
+      <h2 className="text-[22px] mt-0 md:mt-10 font-medium text-[var(--color-gray)]">
         {project.title}
       </h2>
       {project.image && (
