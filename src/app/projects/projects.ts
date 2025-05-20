@@ -10,35 +10,35 @@ export const projects: Project[] = [
   {
     date: "2025-05-11",
     title: "Pulsespot AI",
-    image: "/projects/pulsespot.png",
+    image: "/projects/projects_pulse.png",
     description:
       "Built a sales and revenue intelligence platform w/ Next, FastAPI, Redis. Uses an async LLM-powered email ingestion pipeline that processes ~10k emails / day to generate real-time account intelligence reports. Currently in beta with a publicly traded biotech company.",
     links: [
       {
-        label: "watch the demo",
-        url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        label: "learn more about pulse",
+        url: "https://pulsespot.ai",
       },
     ],
   },
   {
     date: "2025-04-11",
     title: "froura",
-    image: "/projects/pulsespot.png",
+    image: "/projects/projects_froura.png",
     description:
       "Letting AI agents pay for stuff on the internet, or an agent-native payment layer for secure real-money transactions. Optimized for minimal human input while ensuring full user control and transparency. Designed for secure, frictionless agent commerce across real-world internet use cases.",
     links: [
       {
         label: "our demo for ycombinator",
-        url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        url: "https://www.youtube.com/watch?v=LHY-Jbf44a8",
       },
     ],
   },
   {
     date: "2025-02-10",
     title: "Financier",
-    image: null,
+    image: "/projects/projects_financier.png",
     description:
-      "Building code and LLM orchestration agents at Financier across data room breakdowns, deal analysis, lender matching, user onboarding and marketing. ",
+      "Building code and LLM orchestration agents at Financier across data room breakdowns, deal analysis, lender matching, user onboarding and marketing.",
     links: [
       {
         label: "learn more about financier",
@@ -49,15 +49,10 @@ export const projects: Project[] = [
   {
     date: "2024-12-10",
     title: "Financial Chatbot",
-    image: null,
+    image: "/projects/projects_finchat.png",
     description:
       "Worked with the US's largest provider of financial metrics (NDA) to transform 40M raw text records into a 28GB optimized SQL database using GPUs. Built a fine-tuned chatbot layer that retreives relevant information within ~10 seconds through dynamic Elastic Query DSL generation.",
-    links: [
-      {
-        label: "a sneak peek of the alpha",
-        url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-      },
-    ],
+    links: [],
   },
   {
     date: "2024-08-10",
@@ -65,22 +60,17 @@ export const projects: Project[] = [
     image: null,
     description:
       "Built and scaled a HIPAA-compliant neurocognitive intake platform. Uses GPT-4, FSMs, and logistic regression to drive 80% completion, sub-3s diagnostics, and $1M ARR. Cut intake time 8× and dropout rates 3.2× across 2,000+ patients.",
-    links: [
-      {
-        label: "a sneak peek of the alpha",
-        url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-      },
-    ],
+    links: [],
   },
   {
     date: "2023-01-10",
     title: "doubltap.co",
-    image: null,
+    image: "/projects/projects_doubltap.png",
     description:
       "Built an influencer marketing platform w/ React and Django. Scaled to 12 brand campaigns and 100+ influencers onboarded, before selling the tech IP to a major Indian advertising group looking to expand their service offerings ahead of IPO in 2026.",
     links: [
       {
-        label: "a sneak peek of the alpha",
+        label: "a sneak peek of the app",
         url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
       },
     ],
@@ -93,23 +83,18 @@ export const projects: Project[] = [
       "Led end-to-end development of a high-scale donation and tracking platform (Django, React, Redis) in partnership with Sequoia, BCG, and LSIP; raised ₹10Cr (~$1.2M) from 80K users/week, enabled real-time oxygen supply visibility, automated tax/compliance workflows, and integrated Razorpay beta APIs for corporate matching—all built in 4 weeks with a 2-person team and maintained near-100% uptime.",
     links: [
       {
-        label: "a sneak peek of the alpha",
-        url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        label: "virat kohli tweeted about us",
+        url: "https://x.com/imVkohli/status/1390532345753522180",
       },
     ],
   },
   {
     date: "2022-11-10",
     title: "Godam - Hult Prize Global Finalist",
-    image: null,
+    image: "/projects/projects_godam.png",
     description:
       "Built and deployed a mobile-first inventory management platform (Django + React PWA) for rural farmers in 6 weeks during the Hult Prize Global Accelerator; enabled real-time crop tracking, smart storage allocation, and predictive dispatch planning, targeting 10–30% reduction in post-harvest loss—recognized as a Global Finalist (Team India) and 1st place at Hult Prize Regionals (SEA).",
-    links: [
-      {
-        label: "a sneak peek of the alpha",
-        url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-      },
-    ],
+    links: [],
   },
   {
     date: "2022-09-10",
@@ -119,8 +104,8 @@ export const projects: Project[] = [
       "Built and deployed a full-stack COVID vaccination portal (React, Node, Postgres) in 2 weeks, verifying 4.5k students with 95%+ accuracy in <2s. Saved 750+ admin hours, enabled India’s first safe campus reopening.",
     links: [
       {
-        label: "a sneak peek of the alpha",
-        url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        label: "open sourced it for other colleges",
+        url: "https://github.com/psrth/bits-vaccination-portal",
       },
     ],
   },
