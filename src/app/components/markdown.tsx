@@ -51,7 +51,7 @@ export const Paragraph = ({ children, className = "" }: ElementProps) => {
   //
   return (
     <p
-      className={`text-[16px]/7 md:text-[18px]/8 my-2 w-[90%] md:w-[600px] text-[var(--color-gray)] ${className}`}
+      className={`text-[16px]/7 md:text-[18px]/8 mt-4 mb-4 w-[90%] md:w-[100%] text-[var(--color-gray)] ${className}`}
     >
       {children}
     </p>
@@ -130,7 +130,7 @@ export const Blockquote = ({ children, className = "" }: ElementProps) => (
 
 export const UnorderedList = ({ children, className = "" }: ElementProps) => (
   <ul
-    className={`list-disc pl-6 mb-4 text-[16px]/7 md:text-[18px]/8 text-[var(--color-gray)] w-[90%] md:w-[600px] ${className}`}
+    className={`list-disc pl-6 mb-4 text-[16px]/7 md:text-[18px]/8 text-[var(--color-gray)] w-[90%] md:w-[720px] ${className}`}
   >
     {children}
   </ul>
@@ -138,7 +138,7 @@ export const UnorderedList = ({ children, className = "" }: ElementProps) => (
 
 export const OrderedList = ({ children, className = "" }: ElementProps) => (
   <ol
-    className={`list-decimal pl-6 mb-4 text-[16px]/7 md:text-[18px]/8 text-[var(--color-gray)] w-[90%] md:w-[600px] ${className}`}
+    className={`list-decimal pl-6 mb-4 text-[16px]/7 md:text-[18px]/8 text-[var(--color-gray)] w-[90%] md:w-[720px] ${className}`}
   >
     {children}
   </ol>
