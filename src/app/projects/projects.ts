@@ -42,7 +42,7 @@ export const projects: Project[] = [
     links: [
       {
         label: "learn more about financier",
-        url: "https://www.financier.com",
+        url: "https://www.fncr.com",
       },
     ],
   },
