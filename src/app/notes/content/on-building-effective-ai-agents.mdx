@@ -1,0 +1,187 @@
+# On Building Effective AI Agents
+
+### May 11, 2025
+
+For the last few months, most of my days have involved building AI agents for previously manual tasks. My favorite part has been showing the AI agent to the person whose job is now ~50% easier—it's like leaving a 7-year-old in a candy store. I'm now convinced that a well-built AI agent is _basically_ indistinguishable from magic.
+
+With that being said, I do think that it's very easy to build a _really_ bad AI agent. Leave in one point of failure, one component that returns slop, or one subsystem that takes more than a few seconds to run — and your agent will never see a real user.
+
+After months of seeing basically every single combination of problems you can run into, here's my mental framework for building effective AI agents.
+
+## The Framework
+
+Maybe don't start with Monte Carlo Tree Search and Behavior Trees. I've found that it's always simpler to start from a more first-principles approach — what would make this agent useful?
+
+At its core, you probably want a good AI agent to have the same qualities that make up a person that you'd enjoy working with:
+
+1. Deterministic
+2. Smart
+3. Efficient / Reliable
+4. Observable
+
+## Deterministic
+
+If you start thinking of AI agents as input -> output functions, it doesn't take a huge logical leap to realize that determinism, or consistent outputs, are probably the most important metric you need to keep in mind while building an agent.
+
+```haskell
+agent :: input -> output
+```
+
+Unfortunately, LLMs are notorious for being black boxes. We'd live in a pretty weird world if the `uuid.generate()` function got updated every 2 weeks and might secretly be a sycophant:
+
+> _"omg, 003 IS such a great uuid for all the users in your auth table. this shows critical reasoning and a great understanding of cybersecurity principles. congratulations!"_  
+>  (gpt-4.0, probably)
+
+We'll get to deterministic reasoning in a bit. I want to focus on something even simpler — getting your agent to output consistent formats. This becomes especially important when not all of the building blocks of your agent are LLMs (an LLM will be able to parse a broken JSON, but a Stripe webhook will not).
+
+Depending on your use case, I'd say there are probably two good ideas:
+
+**Structured Outputs**
+
+The easiest way to achieve determinism? TypeScript _(\*or as non-programmers call it, Pydantic)_. Just define your schema, force the LLM to output to that schema. And then use that schema downstream for tool calls, logging, whatever.
+
+This works by constraining token generation to the guardrails of your JSON schema. It’s fast, cheap, and gets you close to guaranteed structure, especially with retries. Moreover, it's super simple to do (most APIs support structured outputs).
+
+But:
+
+1. Since structured outputs are enforced token-by-token during generation, you might get responses that are too stiff / mechanical / robotic.
+2. Structured outputs aren’t 100% reliable — all of these APIs come with a disclaimer that the model might make mistakes. Personally, I've found that the smarter reasoning models like o3 and Gemini-2.5 are much _much_ worse at generating structured outputs than the standard models, which can limit certain use cases.
+
+Still, for well-defined tasks, this is probably the simplest setup.
+
+**The "Translator" Pattern**
+
+For certain cases, I've found the best results by using a combination of models instead. You can:
+
+1. Let the "thinking" or the smart model reason freely, and just generate the output in some loosely consistent format — markdown, plain text, whatever.
+2. Pipe that output to a "translator" model like 4o, with the sole purpose of reformatting it into your schema.
+
+It can be more expensive in terms of time + tokens (not necessarily!!), but it does give you the best of both worlds. I prefer using this when structured outputs start to show breakage, especially for complex, high-context tasks that still need to plug into a clean API or a typed user interface.
+
+## Smart
+
+Let’s assume your agent can now consistently output valid JSON. Great. Now it needs to do something _useful_.
+
+This is where most agents actually fall flat — not because the models aren’t smart enough, but because we don’t give them the right environment to act smart in. A good agent setup doesn’t just ask the model to “figure it out on vibes”. It gives it the _context_, _structure_, and _tools_ to reason properly.
+
+**Context**
+
+Memory is everything. Luckily, also an evolutionarily solved problem — you can use the same principles as human memory to build a thoughtful agent.
+
+In the context of LLMs:
+
+1. Short-term memory is your prompt — defining the problem, the interaction history up till now, available tools, and instructions on how to access the long-term memory.
+2. Long-term memory is your RAG system — a way for your agent to access information it doesn't _always_ need, but might be good to have.
+
+If your agent doesn't have access to all the information it needs, it's like working with someone who has selective amnesia. A cool concept for a Disney movie about talking fish? Maybe — but not a quality you'd want in your AI agent.
+
+**Reasoning the Flow**
+
+Think of agent workflows as graphs.
+
+Each node does something small — like run a tool or call an LLM — and the graph as a whole encodes your reasoning pipeline. The real design choice is: _who draws the edges_?
+
+There are two approaches:
+
+- **Code agents**: You define the steps. You know the input, you know what tools it needs, and you hardcode the edges between nodes. These are deterministic, debuggable, and great — but only when you are 100% sure about what your input is going to be.
+- **Orchestration agents**: You give the agent a goal and a toolkit, and it figures out what to run and when. Or, you give the agent the nodes, and _it_ draws the edges to get from the input to the final output. As long as you haven't overcomplicated the mass of nodes in the middle and baked in some guidance in the prompt, these agents actually work really well!
+
+**Tools**
+
+Your agent isn’t doing everything in one step — it’s coordinating the right components. So, you want to:
+
+1. Give the agent _all the tools_ it could need
+2. _Only_ give the agent the tools it could need
+3. Make everything explicit in the prompt.
+
+I find that it's always better to split everything down into sub-components (hint: scoped sub-agents?) — with separate prompting blocks for each type of LLM call, separate blocks for each tool call, separate blocks for data access, MCP, etc.
+
+Every added tool is a lever. But too many levers, and the agent just pulls at random.
+
+## Efficient
+
+Agents are expensive in both time and money. But most of that cost is self-inflicted.
+
+**Cost**
+
+You should be able to _explain_ every token your agent uses.
+
+- **Input tokens**: Strip down your prompts. Can you say it in fewer words? Say less.
+- **Reasoning tokens**: If the agent doesn’t need to think, don’t make it. Don’t ask “why?” when you really just need “what?”
+- **Output tokens**: Only ask for what you’ll actually use. If your system only needs a title and a category, tell your LLM not to give you a poetic explanation.
+
+It gets super interesting when you start to think of tokens as a language — and languages can be condensed into shorthands.
+
+```json
+{
+  "user": {
+    "id": 42,
+    "name": "Alice",
+    "contact": {
+      "email": "alice@example.com",
+      "phone": "123-456-7890"
+    },
+    "roles": ["admin", "editor"],
+    "active": true
+  }
+}
+```
+
+is 67 tokens. Whereas:
+
+```xml
+user:Alice#42
+roles:a,e
+active:t
+contact:alice@example.com;123-456-7890
+```
+
+is 24. This example might be overkill, but do this for 10 users and run it through a 3x faster model on Groq — and you've just dropped your cost by 30x.
+
+And if you're doing retries, cap them. The company card will thank you for it.
+
+Lastly, try every model. You’d be surprised how often the cheap model is just as good.
+
+**Time**
+
+While you might not get your agent to sub-100 milliseconds, you can definitely speed things up:
+
+- **Parallelize**: Most agent flows are graphs — let them run like it. Don’t serialize unless you absolutely have to.
+- **Fast models**: Groq is magic. Llama is smart enough for most things.
+- **Reduce unnecessary reasoning**: You don’t need o3-mini to generate a slug from a title.
+
+Because every time you remove a slow component, your agent feels smarter — even if it isn't.
+
+## Reliable
+
+This is where agents go from toy demos to real systems. The world isn’t stable — APIs fail, models error, and tokens overflow. Your agent needs to be built for _resilience_.
+
+**Retry Mechanisms**
+
+Half of agent failures can be fixed by just trying again. _(source: me)_
+
+- Retry loops are table stakes.
+- AI labs are so laughably bad at reliability that you should _always_ have at least 2 fallback models for any LLM call.
+- Bonus points for bringing in a quality-based retry system. You can use a small eval agent to judge, and in real-time, retry outputs that don't meet any quality requirements.
+
+**Escape Sequences**
+
+When it still fails — and it _will_, especially if you're doing a demo — your agent needs a way out.
+
+- Fail gracefully. Throw to a logging system. Alert the user. Don’t silently die.
+- Don't shy away from bringing a human into the loop. Some things really _do_ need a person to decide.
+- Most importantly, tell the user what’s happening. Nothing’s worse than "An error occurred" from a stuck agent.
+
+## Observable
+
+Lastly, if you can’t see what your agent is doing, you can’t make it better. We talked about breaking your agent into many subcomponent building blocks. Make each block observable and debuggable.
+
+- Use Langfuse. Learn the difference between a trace, a session, and an observation. (It'll take 30 minutes, but it'll change your life.)
+- Trace _everything_.
+- Build internal eval agents. Let them flag low-quality outputs or anomalies either in real-time or in batch. Even a dumb eval agent is better than none.
+
+That’s the framework. It’s not perfect — but it works.
+
+The goal is always the same: make something that feels like magic and holds up in production. If it’s consistent, smart, fast, dependable, and observable — you’re 90% of the way there.
+
+The last 10%? `Error: Token limit exceeded. Input has 4102 tokens; maximum allowed is 4096.`

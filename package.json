@@ -1,5 +1,5 @@
 {
-  "name": "psrth.io",
+  "name": "psrth",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,13 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "12.1.6",
-    "react": "18.1.0",
-    "react-dom": "18.1.0",
-    "react-icons": "^4.3.1"
+    "@tailwindcss/typography": "^0.5.16",
+    "next": "15.3.1",
+    "next-mdx-remote": "^5.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-github-calendar": "^4.5.7",
+    "react-icons": "^5.5.0",
+    "rehype-starry-night": "^2.2.0",
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
-    "eslint": "8.15.0",
-    "eslint-config-next": "12.1.6"
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.1",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }
