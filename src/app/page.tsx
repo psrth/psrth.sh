@@ -49,9 +49,6 @@ export default function Home() {
       />
       <Wrapper>
         <ExperienceListItem status="current">
-          founding engineer at pulse ai (2024 - present)
-        </ExperienceListItem>
-        <ExperienceListItem status="current">
           tech lead at{" "}
           <a
             href="https://fischerjordan.com"
