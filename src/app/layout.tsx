@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 import "./globals.css";
 import "./styles/syntax-highlighting.css";
@@ -47,6 +48,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID as string} />
       <body className={`${soehne.variable} ${tiempos.variable} antialiased`}>
         <Header />
         <main className="flex flex-col w-[100vw] lg:w-[1024px] min-h-[65vh] mx-auto mt-25 bg-white">
