@@ -51,7 +51,7 @@ export const Paragraph = ({ children, className = "" }: ElementProps) => {
   //
   return (
     <p
-      className={`text-[16px]/7 md:text-[18px]/8 mt-4 mb-4 w-[90%] md:w-[100%] text-[var(--color-gray)] ${className}`}
+      className={`text-[16px]/7 md:text-[18px]/8 mt-5 mb-5 w-[90%] md:w-[100%] text-[var(--color-gray)] ${className}`}
     >
       {children}
     </p>

@@ -100,7 +100,7 @@ async function Note({ params }: NoteProps) {
 
   return (
     <Wrapper>
-      <article className="prose max-w-none prose-pre:p-0 prose-pre:bg-transparent prose-pre:m-0">
+      <article className="prose max-w-none prose-pre:p-0 prose-pre:bg-transparent prose-pre:m-0 mb-[100px]">
         {content}
       </article>
     </Wrapper>
