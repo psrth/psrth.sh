@@ -14,10 +14,10 @@ export const projects: Project[] = [
     description:
       "Built a sales and revenue intelligence platform w/ Next, FastAPI, Redis. Uses an async LLM-powered email ingestion pipeline that processes ~10k emails / day to generate real-time account intelligence reports. Currently in beta with a publicly traded biotech company.",
     links: [
-      {
-        label: "learn more about pulse",
-        url: "https://pulsespot.ai",
-      },
+      // {
+      //   label: "learn more about pulse",
+      //   url: "https://pulsespot.ai",
+      // },
     ],
   },
   {

@@ -30,7 +30,7 @@ export default function Home() {
         </ListItem>
         <ListItem>
           accidentally setting fire to my friend&apos;s 2012 Alienware because
-          the entire Cannes Film Festival was pinging our server.
+          the entire Cannes Film Festival was pinging our server
         </ListItem>
         <ListItem>
           that time Virat Kohli tweeted something I&apos;d built
