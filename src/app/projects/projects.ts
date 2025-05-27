@@ -71,7 +71,7 @@ export const projects: Project[] = [
     links: [
       {
         label: "a sneak peek of the app",
-        url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        url: "https://www.youtube.com/watch?v=vSqEcva3tbs",
       },
     ],
   },

@@ -11,7 +11,7 @@ interface ElementProps {
 
 export const H1 = ({ children, className = "" }: ElementProps) => (
   <h1
-    className={`text-[28px]/8 md:text-[32px]/12 w-[90%] md:w-[620px] font-tiempos tracking-tight ${className}`}
+    className={`text-[28px]/8 md:text-[32px]/12 w-[90%] md:w-[620px] font-tiempos tracking-tight text-[var(--color-black)] ${className}`}
   >
     {children}
   </h1>

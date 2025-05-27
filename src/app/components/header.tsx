@@ -26,9 +26,12 @@ export default function Header() {
         ).toFixed()}% 0 ${Number(
           (clipLeft / container.offsetWidth) * 100
         ).toFixed()}%)`;
+      } else {
+        container.style.clipPath = `inset(0 100% 0 0%)`;
       }
     }
   }, [pathname]);
+  // shoutout to https://emilkowal.ski/ for this animation
 
   return (
     <div className="flex flex-col w-full font-soehne">
@@ -44,6 +47,7 @@ export default function Header() {
           <div
             aria-hidden="true"
             className="absolute top-0 left-0 w-full h-full bg-gray-50 transition-all duration-300 ease-in-out z-0"
+            style={{ clipPath: "inset(0 100% 0 0%)" }}
             ref={containerRef}
           />
           <div className="flex flex-row items-center relative z-10">

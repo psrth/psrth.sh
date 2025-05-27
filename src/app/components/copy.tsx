@@ -2,7 +2,7 @@ import { FiChevronRight } from "react-icons/fi";
 
 export const Heading = ({ children }: { children: React.ReactNode }) => {
   return (
-    <h1 className="text-[28px]/10 md:text-[32px]/12 w-[90%] md:w-[620px] font-tiempos tracking-tight">
+    <h1 className="text-[28px]/10 md:text-[32px]/12 w-[90%] md:w-[620px] font-tiempos tracking-tight text-[var(--color-black)]">
       {children}
     </h1>
   );
