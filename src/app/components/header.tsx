@@ -40,7 +40,9 @@ export default function Header() {
         <Link href="/">
           <div className="flex flex-row items-center gap-3 ml-3 md:ml-0">
             <Image src="/psrth.png" alt="logo" width={24} height={24} />
-            <div className="text-md font-medium">psrth</div>
+            <div className="text-md font-medium text-[var(--color-black)]">
+              psrth
+            </div>
           </div>
         </Link>
         <div className="flex flex-row items-center mt-4 md:mt-0 relative">
