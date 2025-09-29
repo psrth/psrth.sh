@@ -36,8 +36,8 @@ export default function Home() {
           that time Virat Kohli tweeted something I&apos;d built
         </ListItem>
         <BodyTextBold>
-          I&apos;m currently splitting my time leading tech for a consulting
-          firm in New York, and surfing at Point Dume State Beach.
+          I&apos;m currently splitting my time building personalized
+          recommendation algorithms and surfing at Point Dume State Beach.
         </BodyTextBold>
       </Wrapper>
       <Image
@@ -49,6 +49,13 @@ export default function Home() {
       />
       <Wrapper>
         <ExperienceListItem status="current">
+          building machine learning algorithms at{" "}
+          <span className="decoration-[var(--color-light-gray)] underline decoration-2 underline-offset-2 [text-decoration-skip-ink:none]">
+            (stealth)
+          </span>{" "}
+          (2025 - present)
+        </ExperienceListItem>
+        <ExperienceListItem status="pasrt">
           tech lead at{" "}
           <a
             href="https://fischerjordan.com"
@@ -58,7 +65,7 @@ export default function Home() {
           >
             fischer jordan
           </a>{" "}
-          (2023 - present)
+          (2023 - 2025)
         </ExperienceListItem>
         <ExperienceListItem status="past">
           graduated from{" "}
