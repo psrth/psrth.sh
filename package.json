@@ -9,12 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@next/third-parties": "^15.4.0-canary.51",
+    "@next/third-parties": "^16.1.1",
     "@tailwindcss/typography": "^0.5.16",
-    "next": "^15.3.2",
+    "next": "^16.1.1",
     "next-mdx-remote": "^5.0.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
     "react-github-calendar": "^4.5.7",
     "react-icons": "^5.5.0",
     "rehype-starry-night": "^2.2.0",
@@ -22,13 +22,13 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
+    "@tailwindcss/postcss": "^4.1.18",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.3.1",
-    "tailwindcss": "^4",
+    "eslint-config-next": "^16.1.1",
+    "tailwindcss": "^4.1.18",
     "typescript": "^5"
   }
 }
