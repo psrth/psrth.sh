@@ -10,11 +10,11 @@ export default function Footer() {
             <span className="relative inline-flex w-2 h-2 md:w-[10px] md:h-[10px] rounded-full bg-red-500" />
           </div>
 
-          <div className="text-[16px]/8 md:text-[18px]/8  text-[var(--color-gray)] mr-2 md:mr-0">
+          <div className="text-[16px]/8 md:text-[18px]/8  text-(--color-gray) mr-2 md:mr-0">
             <span className="font-medium">live from los angeles, ca</span>
 
-            <span className="font-regular text-[var(--color-light-gray)] ml-3">
-              2025 /{" "}
+            <span className="font-regular text-(--color-light-gray) ml-3">
+              2026 /{" "}
               <a
                 href="https://github.com/psrth/psrth.sh"
                 target="_blank"

@@ -61,8 +61,8 @@ interface YearTimelineProps {
 function YearTimeline({ year }: YearTimelineProps) {
   return (
     <div className="w-full md:w-20 gap-2 flex flex-row md:flex-col items-center">
-      <p className="text-[18px] text-[var(--color-light-gray)]">{year}</p>
-      <div className="w-full h-[2px] md:h-full md:w-[2px] md:mt-2  bg-[var(--color-light-gray)] opacity-30"></div>
+      <p className="text-[18px] text-(--color-light-gray)">{year}</p>
+      <div className="w-full h-[2px] md:h-full md:w-[2px] md:mt-2  bg-(--color-light-gray) opacity-30"></div>
     </div>
   );
 }
@@ -74,7 +74,7 @@ interface ProjectCardProps {
 function ProjectCard({ project }: ProjectCardProps) {
   return (
     <div className="flex flex-col gap-2">
-      <h2 className="text-[22px] mt-0 md:mt-10 font-medium text-[var(--color-gray)]">
+      <h2 className="text-[22px] mt-0 md:mt-10 font-medium text-(--color-gray)">
         {project.title}
       </h2>
       {project.image && (
@@ -86,7 +86,7 @@ function ProjectCard({ project }: ProjectCardProps) {
           className="my-2"
         />
       )}
-      <p className="text-[16px]/7 md:text-[18px]/8 font-regular w-[90%] md:w-[600px] mt-2 text-[var(--color-gray)]">
+      <p className="text-[16px]/7 md:text-[18px]/8 font-regular w-[90%] md:w-[600px] mt-2 text-(--color-gray)">
         {project.description}
       </p>
       <ProjectLinks links={project.links} />
@@ -108,11 +108,11 @@ function ProjectLinks({ links }: ProjectLinksProps) {
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[var(--color-link-blue)] font-medium text-[16px]/7 md:text-[18px]/8"
+            className="text-(--color-link-blue) font-medium text-[16px]/7 md:text-[18px]/8"
           >
             {link.label}
           </a>
-          <FiExternalLink className="text-[var(--color-link-blue)] opacity-80" />
+          <FiExternalLink className="text-(--color-link-blue) opacity-80" />
         </div>
       ))}
     </div>

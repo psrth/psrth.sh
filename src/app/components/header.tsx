@@ -35,12 +35,12 @@ export default function Header() {
 
   return (
     <div className="flex flex-col w-full font-soehne">
-      <div className="bg-[var(--color-teal)] h-4 w-full" />
+      <div className="bg-(--color-teal) h-4 w-full" />
       <div className="flex flex-col md:flex-row w-[95vw] md:w-[740px] mx-auto justify-between align-bottom mt-10">
         <Link href="/">
           <div className="flex flex-row items-center gap-3 ml-3 md:ml-0">
             <Image src="/psrth.png" alt="logo" width={24} height={24} />
-            <div className="text-md font-medium text-[var(--color-black)]">
+            <div className="text-md font-medium text-(--color-black)">
               psrth
             </div>
           </div>
@@ -111,8 +111,8 @@ const HeaderItem = React.forwardRef<HTMLAnchorElement, HeaderItemProps>(
         <p
           className={`text-md ${
             isActive
-              ? "text-[var(--color-gray)] font-medium"
-              : "text-[var(--color-light-gray)] font-regular"
+              ? "text-(--color-gray) font-medium"
+              : "text-(--color-light-gray) font-regular"
           }`}
         >
           {label}

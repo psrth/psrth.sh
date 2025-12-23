@@ -18,14 +18,14 @@ function Notes() {
 
       {/* notes table - header */}
       <div className="hidden md:flex flex-row gap-16 mt-10">
-        <p className="text-[16px]/7 md:text-[18px]/8 font-regular text-[var(--color-light-gray)] w-[50px]">
+        <p className="text-[16px]/7 md:text-[18px]/8 font-regular text-(--color-light-gray) w-[50px]">
           date
         </p>
-        <p className="text-[16px]/7 md:text-[18px]/8 font-regular text-[var(--color-light-gray)]">
+        <p className="text-[16px]/7 md:text-[18px]/8 font-regular text-(--color-light-gray)">
           title
         </p>
       </div>
-      <div className="hidden md:flex w-full h-[2px] bg-[var(--color-light-gray)] opacity-20 mt-3" />
+      <div className="hidden md:flex w-full h-[2px] bg-(--color-light-gray) opacity-20 mt-3" />
 
       {/* notes table - core */}
       {(() => {
@@ -41,18 +41,18 @@ function Notes() {
               <Link href={note.link}>
                 <div className="flex flex-col md:flex-row gap-2 md:gap-16 py-3">
                   <p
-                    className={`text-[16px]/7 md:text-[18px]/8 font-regular text-[var(--color-light-gray)] w-[50px] ${
+                    className={`text-[16px]/7 md:text-[18px]/8 font-regular text-(--color-light-gray) w-[50px] ${
                       shouldShowYear ? "mt-10 md:mt-0" : ""
                     }`}
                   >
                     {shouldShowYear ? year : ""}
                   </p>
-                  <p className="text-[16px]/7 md:text-[18px]/8 font-regular text-[var(--color-gray)] overflow-hidden text-ellipsis whitespace-nowrap max-w-[300px] md:max-w-[500px]">
+                  <p className="text-[16px]/7 md:text-[18px]/8 font-regular text-(--color-gray) overflow-hidden text-ellipsis whitespace-nowrap max-w-[300px] md:max-w-[500px]">
                     {note.title}
                   </p>
                 </div>
               </Link>
-              <div className="w-full h-[2px] bg-[var(--color-light-gray)] opacity-20" />
+              <div className="w-full h-[2px] bg-(--color-light-gray) opacity-20" />
             </div>
           );
         });

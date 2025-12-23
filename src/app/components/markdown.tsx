@@ -11,7 +11,7 @@ interface ElementProps {
 
 export const H1 = ({ children, className = "" }: ElementProps) => (
   <h1
-    className={`text-[28px]/8 md:text-[32px]/12 w-[90%] md:w-[620px] font-tiempos tracking-tight text-[var(--color-black)] ${className}`}
+    className={`text-[28px]/8 md:text-[32px]/12 w-[90%] md:w-[620px] font-tiempos tracking-tight text-(--color-black) ${className}`}
   >
     {children}
   </h1>
@@ -19,16 +19,16 @@ export const H1 = ({ children, className = "" }: ElementProps) => (
 
 export const H2 = ({ children, className = "" }: ElementProps) => (
   <h2
-    className={`text-[22px]/7 md:text-[24px]/8 font-medium mt-16 mb-3 text-[var(--color-gray)]   ${className}`}
+    className={`text-[22px]/7 md:text-[24px]/8 font-medium mt-16 mb-3 text-(--color-gray)   ${className}`}
   >
     {children}
-    <div className="flex h-[2px] w-full bg-[var(--color-light-gray)]  my-2 opacity-20" />
+    <div className="flex h-[2px] w-full bg-(--color-light-gray)  my-2 opacity-20" />
   </h2>
 );
 
 export const H3 = ({ children, className = "" }: ElementProps) => (
   <h3
-    className={`text-[14px]/6 md:text-[16px]/7 font-regular mt-2 mb-10 text-[var(--color-light-gray)] ${className}`}
+    className={`text-[14px]/6 md:text-[16px]/7 font-regular mt-2 mb-10 text-(--color-light-gray) ${className}`}
   >
     {children}
   </h3>
@@ -51,7 +51,7 @@ export const Paragraph = ({ children, className = "" }: ElementProps) => {
   //
   return (
     <p
-      className={`text-[16px]/7 md:text-[18px]/8 mt-5 mb-5 w-[90%] md:w-[100%] text-[var(--color-gray)] ${className}`}
+      className={`text-[16px]/7 md:text-[18px]/8 mt-5 mb-5 w-[90%] md:w-[100%] text-(--color-gray) ${className}`}
     >
       {children}
     </p>
@@ -84,7 +84,7 @@ export const MDXImage = ({
         className={`rounded-md w-full ${className}`}
       />
       {alt && (
-        <p className="text-[14px] text-[var(--color-light-gray)] mt-2 text-center">
+        <p className="text-[14px] text-(--color-light-gray) mt-2 text-center">
           {alt}
         </p>
       )}
@@ -101,7 +101,7 @@ export const Link = ({
   ...props
 }: ElementProps & React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
   <a
-    className={`text-[var(--color-link-blue)] font-medium hover:underline ${className}`}
+    className={`text-(--color-link-blue) font-medium hover:underline ${className}`}
     target="_blank"
     rel="noopener noreferrer"
     {...props}
@@ -113,7 +113,7 @@ export const Link = ({
 export const Table = ({ children, className = "" }: ElementProps) => (
   <div className="overflow-x-auto my-6 w-full">
     <table
-      className={`min-w-full divide-y divide-[var(--color-light-gray)]/30 ${className}`}
+      className={`min-w-full divide-y divide-(--color-light-gray)/30 ${className}`}
     >
       {children}
     </table>
@@ -122,7 +122,7 @@ export const Table = ({ children, className = "" }: ElementProps) => (
 
 export const Blockquote = ({ children, className = "" }: ElementProps) => (
   <blockquote
-    className={`border-l-4 border-[var(--color-link-blue)] italic my-12 pl-4 py-1 bg-[#f9fafb] text-[var(--color-gray)] rounded-r w-[95%] md:w-[650px] ${className}`}
+    className={`border-l-4 border-(--color-link-blue) italic my-12 pl-4 py-1 bg-[#f9fafb] text-(--color-gray) rounded-r w-[95%] md:w-[650px] ${className}`}
   >
     {children}
   </blockquote>
@@ -130,7 +130,7 @@ export const Blockquote = ({ children, className = "" }: ElementProps) => (
 
 export const UnorderedList = ({ children, className = "" }: ElementProps) => (
   <ul
-    className={`list-disc pl-6 mb-4 text-[16px]/7 md:text-[18px]/8 text-[var(--color-gray)] w-[90%] md:w-[720px] ${className}`}
+    className={`list-disc pl-6 mb-4 text-[16px]/7 md:text-[18px]/8 text-(--color-gray) w-[90%] md:w-[720px] ${className}`}
   >
     {children}
   </ul>
@@ -138,7 +138,7 @@ export const UnorderedList = ({ children, className = "" }: ElementProps) => (
 
 export const OrderedList = ({ children, className = "" }: ElementProps) => (
   <ol
-    className={`list-decimal pl-6 mb-4 text-[16px]/7 md:text-[18px]/8 text-[var(--color-gray)] w-[90%] md:w-[720px] ${className}`}
+    className={`list-decimal pl-6 mb-4 text-[16px]/7 md:text-[18px]/8 text-(--color-gray) w-[90%] md:w-[720px] ${className}`}
   >
     {children}
   </ol>
@@ -210,7 +210,7 @@ export const Pre = (props: React.ComponentPropsWithRef<"pre">) => {
   return (
     <div className="relative group my-6">
       <pre className="p-5 pt-10 rounded-lg overflow-x-auto font-mono text-[14px] leading-relaxed bg-[#f9fafb]">
-        <div className="absolute right-4 top-3 text-xs bg-[#f2f2f2] px-2 py-0.5 rounded text-[var(--color-gray)] font-mono z-100">
+        <div className="absolute right-4 top-3 text-xs bg-[#f2f2f2] px-2 py-0.5 rounded text-(--color-gray) font-mono z-100">
           {languageDisplay}
         </div>
         {props.children}
@@ -245,7 +245,7 @@ export const TableRow = ({ children, className = "" }: ElementProps) => (
 
 export const TableHeader = ({ children, className = "" }: ElementProps) => (
   <th
-    className={`px-4 py-3 text-left text-[14px] font-medium text-[var(--color-light-gray)] uppercase tracking-wider ${className}`}
+    className={`px-4 py-3 text-left text-[14px] font-medium text-(--color-light-gray) uppercase tracking-wider ${className}`}
   >
     {children}
   </th>
@@ -253,7 +253,7 @@ export const TableHeader = ({ children, className = "" }: ElementProps) => (
 
 export const TableCell = ({ children, className = "" }: ElementProps) => (
   <td
-    className={`px-4 py-3 whitespace-nowrap text-[16px] text-[var(--color-gray)] ${className}`}
+    className={`px-4 py-3 whitespace-nowrap text-[16px] text-(--color-gray) ${className}`}
   >
     {children}
   </td>
@@ -261,7 +261,7 @@ export const TableCell = ({ children, className = "" }: ElementProps) => (
 
 export const TableBody = ({ children, className = "" }: ElementProps) => (
   <tbody
-    className={`divide-y divide-[var(--color-light-gray)]/30 ${className}`}
+    className={`divide-y divide-(--color-light-gray)/30 ${className}`}
   >
     {children}
   </tbody>

@@ -2,7 +2,7 @@ import { FiChevronRight } from "react-icons/fi";
 
 export const Heading = ({ children }: { children: React.ReactNode }) => {
   return (
-    <h1 className="text-[28px]/10 md:text-[32px]/12 w-[90%] md:w-[620px] font-tiempos tracking-tight text-[var(--color-black)]">
+    <h1 className="text-[28px]/10 md:text-[32px]/12 w-[90%] md:w-[620px] font-tiempos tracking-tight text-(--color-black)">
       {children}
     </h1>
   );
@@ -10,7 +10,7 @@ export const Heading = ({ children }: { children: React.ReactNode }) => {
 
 export const BodyText = ({ children }: { children: React.ReactNode }) => {
   return (
-    <p className="text-[16px]/7 md:text-[18px]/8 font-regular w-[90%] md:w-[600px] mt-10 text-[var(--color-gray)]">
+    <p className="text-[16px]/7 md:text-[18px]/8 font-regular w-[90%] md:w-[600px] mt-10 text-(--color-gray)">
       {children}
     </p>
   );
@@ -18,7 +18,7 @@ export const BodyText = ({ children }: { children: React.ReactNode }) => {
 
 export const BodyTextBold = ({ children }: { children: React.ReactNode }) => {
   return (
-    <p className="text-[16px]/7 md:text-[18px]/8 font-medium w-[90%] md:w-[600px] mt-10 text-[var(--color-gray)]">
+    <p className="text-[16px]/7 md:text-[18px]/8 font-medium w-[90%] md:w-[600px] mt-10 text-(--color-gray)">
       {children}
     </p>
   );
@@ -27,8 +27,8 @@ export const BodyTextBold = ({ children }: { children: React.ReactNode }) => {
 export const ListItem = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex flex-row gap-2 mt-4">
-      <FiChevronRight className="text-[var(--color-light-gray)] mt-2" />
-      <div className="text-[16px]/7 md:text-[18px]/8 font-regular w-[90%] md:w-[600px] text-[var(--color-gray)]">
+      <FiChevronRight className="text-(--color-light-gray) mt-2" />
+      <div className="text-[16px]/7 md:text-[18px]/8 font-regular w-[90%] md:w-[600px] text-(--color-gray)">
         {children}
       </div>
     </div>
@@ -47,15 +47,15 @@ export const ExperienceListItem = ({
       <FiChevronRight
         className={`${
           status === "current"
-            ? "text-[var(--color-gray)]"
-            : "text-[var(--color-light-gray)]"
+            ? "text-(--color-gray)"
+            : "text-(--color-light-gray)"
         } mt-2 opacity-75`}
       />
       <div
         className={`text-[16px]/7 md:text-[18px]/8 ${
           status === "current"
-            ? "font-medium text-[var(--color-gray)]"
-            : "font-regular text-[var(--color-light-gray)]"
+            ? "font-medium text-(--color-gray)"
+            : "font-regular text-(--color-light-gray)"
         } w-[600px]`}
       >
         {children}

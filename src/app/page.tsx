@@ -50,7 +50,7 @@ export default function Home() {
       <Wrapper>
         <ExperienceListItem status="current">
           building machine learning algorithms at{" "}
-          <span className="decoration-[var(--color-light-gray)] underline decoration-2 underline-offset-2 [text-decoration-skip-ink:none]">
+          <span className="decoration-(--color-light-gray) underline decoration-2 underline-offset-2 [text-decoration-skip-ink:none]">
             (stealth)
           </span>{" "}
           (2025 - present)
@@ -61,7 +61,7 @@ export default function Home() {
             href="https://fischerjordan.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="decoration-[var(--color-light-gray)] underline decoration-2 underline-offset-2 [text-decoration-skip-ink:none]"
+            className="decoration-(--color-light-gray) underline decoration-2 underline-offset-2 [text-decoration-skip-ink:none]"
           >
             fischer jordan
           </a>{" "}
@@ -73,7 +73,7 @@ export default function Home() {
             href="https://bits-pilani.ac.in/"
             target="_blank"
             rel="noopener noreferrer"
-            className="decoration-[var(--color-light-gray)]/20 underline decoration-2 underline-offset-2 [text-decoration-skip-ink:none]"
+            className="decoration-(--color-light-gray)/20 underline decoration-2 underline-offset-2 [text-decoration-skip-ink:none]"
           >
             bits pilani, india
           </a>{" "}
@@ -85,7 +85,7 @@ export default function Home() {
             href="https://doubltap.co"
             target="_blank"
             rel="noopener noreferrer"
-            className="decoration-[var(--color-light-gray)]/20 underline decoration-2 underline-offset-2 [text-decoration-skip-ink:none]"
+            className="decoration-(--color-light-gray)/20 underline decoration-2 underline-offset-2 [text-decoration-skip-ink:none]"
           >
             doubltap,
           </a>{" "}
@@ -97,7 +97,7 @@ export default function Home() {
             href="https://orangeyak.co"
             target="_blank"
             rel="noopener noreferrer"
-            className="decoration-[var(--color-light-gray)]/20 underline decoration-2 underline-offset-2 [text-decoration-skip-ink:none]"
+            className="decoration-(--color-light-gray)/20 underline decoration-2 underline-offset-2 [text-decoration-skip-ink:none]"
           >
             orange yak
           </a>{" "}
@@ -108,20 +108,20 @@ export default function Home() {
           If you&apos;re just hanging out here, feel free to check out some of
           the things I&apos;ve worked on{" "}
           <Link href="/projects">
-            <span className="font-medium text-[var(--color-light-gray)]">
+            <span className="font-medium text-(--color-light-gray)">
               (projects)
             </span>
           </Link>
           , or some of my moderately opinionated takes{" "}
           <Link href="/notes">
-            <span className="font-medium text-[var(--color-light-gray)]">
+            <span className="font-medium text-(--color-light-gray)">
               (notes)
             </span>
           </Link>
           . Alternatively, feel free to reach out — I&apos;m always on the
           lookout for interesting problems to work on / cool people to work with{" "}
           <Link href="/contact">
-            <span className="font-medium text-[var(--color-light-gray)]">
+            <span className="font-medium text-(--color-light-gray)">
               (contact)
             </span>
           </Link>
