@@ -1,5 +1,4 @@
-import Heading, { BodyText } from "./components/copy";
-import Wrapper from "./components/wrapper";
+import { Heading, BodyText, Wrapper } from "@repo/ui";
 
 export default function Error() {
   return (

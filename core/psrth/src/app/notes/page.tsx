@@ -3,8 +3,7 @@ import { Metadata } from "next";
 
 import { notes } from "./content/notes";
 
-import Heading from "../components/copy";
-import Wrapper from "../components/wrapper";
+import { Heading, Wrapper } from "@repo/ui";
 
 export const metadata: Metadata = {
   title: "notes / psrth.sh",

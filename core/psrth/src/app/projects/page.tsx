@@ -4,8 +4,7 @@ import Image from "next/image";
 import { FiExternalLink } from "react-icons/fi";
 
 import { projects } from "./projects";
-import Heading from "../components/copy";
-import Wrapper from "../components/wrapper";
+import { Heading, Wrapper } from "@repo/ui";
 import { Project } from "./projects";
 
 export const metadata: Metadata = {

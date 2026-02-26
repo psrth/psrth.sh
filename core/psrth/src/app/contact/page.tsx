@@ -1,8 +1,7 @@
 import Image from "next/image";
 import { Metadata } from "next";
 
-import Wrapper from "../components/wrapper";
-import Heading from "../components/copy";
+import { Wrapper, Heading } from "@repo/ui";
 
 export const metadata: Metadata = {
   title: "contact / psrth.sh",

@@ -1,9 +1,15 @@
 # build
 .next
+dist
 node_modules
+
+# turbo
+.turbo
 
 # env
 .env
+.env.local
+.env.*.local
 
 # macOS
 .DS_Store

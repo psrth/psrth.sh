@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
-import "./globals.css";
-import "./styles/syntax-highlighting.css";
+import "@repo/ui/styles/globals.css";
+import "@repo/ui/styles/syntax-highlighting.css";
 
 import Header from "./components/header";
 import Footer from "./components/footer";

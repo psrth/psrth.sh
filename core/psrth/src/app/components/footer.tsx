@@ -1,4 +1,4 @@
-import Wrapper from "./wrapper";
+import { Wrapper } from "@repo/ui";
 
 export default function Footer() {
   return (

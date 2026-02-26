@@ -1,15 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import Wrapper from "./components/wrapper";
-import GitHubCalendarCard from "./components/github-calendar";
 import {
+  Wrapper,
   Heading,
   BodyText,
   ListItem,
   BodyTextBold,
   ExperienceListItem,
-} from "./components/copy";
+} from "@repo/ui";
+import GitHubCalendarCard from "./components/github-calendar";
 
 export default function Home() {
   return (

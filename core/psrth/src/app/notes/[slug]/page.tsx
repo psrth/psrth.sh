@@ -1,9 +1,8 @@
 import fs from "fs";
 import path from "path";
 import { compileMDX } from "next-mdx-remote/rsc";
-import Wrapper from "@/app/components/wrapper";
+import { Wrapper, MDXComponents } from "@repo/ui";
 import { Metadata } from "next";
-import { MDXComponents } from "@/app/components/markdown";
 import rehypeStarryNight from "rehype-starry-night";
 import { notFound } from "next/navigation";
 import remarkGfm from "remark-gfm";
