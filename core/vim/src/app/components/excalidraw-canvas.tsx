@@ -104,7 +104,7 @@ function ExcalidrawCanvasInner({
   }, []);
 
   const handleChange = useCallback(
-    (elements: any[], appState: any, files: any) => {
+    (elements: readonly any[], appState: any, files: any) => {
       const filtered = elements.filter((el: any) => !el.isDeleted);
       const data = JSON.stringify({
         elements: filtered,

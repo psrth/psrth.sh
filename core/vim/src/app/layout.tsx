@@ -31,7 +31,7 @@ const tiempos = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "vim",
+  title: "vim / psrth.sh",
   description: "a minimalist, local storage backed scribbling app",
 };
 
