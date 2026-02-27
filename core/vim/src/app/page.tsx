@@ -6,6 +6,7 @@ import { useNotes } from "@/lib/hooks/use-notes";
 import Header from "./components/header";
 import NoteRow from "./components/note-row";
 import CommandPalette from "./components/command-palette";
+import FloatingToolbar from "./components/floating-toolbar";
 
 export default function HomePage() {
   const { notes, createNote, deleteNote, togglePin } = useNotes();
@@ -18,11 +19,8 @@ export default function HomePage() {
   };
 
   return (
-    <div className="flex flex-col w-[90vw] md:w-[740px] max-w-[740px] mx-auto mt-16 animate-fade-in">
-      <Header
-        onSearchClick={() => setCommandPaletteOpen(true)}
-        onNewClick={() => handleNewNote("markdown")}
-      />
+    <div className="flex flex-col w-[90vw] md:w-[740px] max-w-[740px] mx-auto mt-25 animate-fade-in">
+      <Header />
       <div className="mt-12">
         {notes.map((note) => (
           <NoteRow
@@ -43,8 +41,12 @@ export default function HomePage() {
         onOpenChange={setCommandPaletteOpen}
         notes={notes}
         onCreateNote={handleNewNote}
-        onDeleteNote={deleteNote}
-        onTogglePin={togglePin}
+      />
+      <FloatingToolbar
+        variant="home"
+        onSearchClick={() => setCommandPaletteOpen(true)}
+        onNewMarkdown={() => handleNewNote("markdown")}
+        onNewCanvas={() => handleNewNote("excalidraw")}
       />
     </div>
   );
