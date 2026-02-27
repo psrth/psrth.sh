@@ -3,7 +3,8 @@
 import { useState, useEffect, useCallback, useRef, memo } from "react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
-import { FiHome } from "react-icons/fi";
+import { FiHome, FiMoon, FiSun } from "react-icons/fi";
+import { useThemeContext } from "@/lib/providers/theme-provider";
 import "@excalidraw/excalidraw/index.css";
 
 const Excalidraw = dynamic(
@@ -18,9 +19,11 @@ const Excalidraw = dynamic(
 const OverlayTitle = memo(function OverlayTitle({
   initialTitle,
   onTitleChange,
+  isDark,
 }: {
   initialTitle: string;
   onTitleChange: (title: string) => void;
+  isDark: boolean;
 }) {
   const [title, setTitle] = useState(initialTitle);
   const ref = useRef(onTitleChange);
@@ -33,14 +36,17 @@ const OverlayTitle = memo(function OverlayTitle({
 
   return (
     <div
-      className="fixed flex items-center rounded-[8px]"
+      className="fixed flex items-center rounded-[10px]"
       style={{
         top: 16,
         left: 96,
         height: 36,
-        backgroundColor: "#ffffff",
+        backgroundColor: isDark ? "#232329" : "#ffffff",
         zIndex: 100,
         padding: "0 12px",
+        boxShadow: isDark
+          ? "0 1px 4px rgba(0,0,0,0.3)"
+          : "0 1px 2px rgba(0,0,0,0.05)",
       }}
     >
       <input
@@ -52,7 +58,7 @@ const OverlayTitle = memo(function OverlayTitle({
           border: "none",
           boxShadow: "none",
           width: 220,
-          color: "#1b1b1f",
+          color: isDark ? "#e0e0e0" : "#1b1b1f",
         }}
         placeholder="Untitled"
       />
@@ -82,6 +88,8 @@ function ExcalidrawCanvasInner({
   const onTitleChangeRef = useRef(onTitleChange);
   onTitleChangeRef.current = onTitleChange;
   const router = useRouter();
+  const { theme, toggleTheme } = useThemeContext();
+  const isDark = theme === "dark";
 
   useEffect(() => {
     if (content) {
@@ -158,11 +166,11 @@ function ExcalidrawCanvasInner({
 
   if (!initialData) return null;
 
-  const theme =
-    typeof document !== "undefined" &&
-    document.documentElement.dataset.theme === "dark"
-      ? "dark"
-      : "light";
+  const toolbarBg = isDark ? "#232329" : "#ffffff";
+  const toolbarFg = isDark ? "#e0e0e0" : "#1b1b1f";
+  const toolbarShadow = isDark
+    ? "0 1px 4px rgba(0,0,0,0.3)"
+    : "0 1px 2px rgba(0,0,0,0.05)";
 
   return (
     <div className="w-screen h-screen fixed inset-0 z-10">
@@ -187,9 +195,9 @@ function ExcalidrawCanvasInner({
         style={{
           top: 16,
           left: 60,
-          backgroundColor: "#8097B4",
-          color: "#ffffff",
-          boxShadow: "0 1px 2px rgba(0,0,0,0.05)",
+          backgroundColor: toolbarBg,
+          color: toolbarFg,
+          boxShadow: toolbarShadow,
           zIndex: 100,
         }}
       >
@@ -199,7 +207,23 @@ function ExcalidrawCanvasInner({
       <OverlayTitle
         initialTitle={titleRef.current}
         onTitleChange={stableOnTitleChange}
+        isDark={isDark}
       />
+      {/* Theme toggle — top right */}
+      <button
+        onClick={toggleTheme}
+        className="fixed flex items-center justify-center w-[36px] h-[36px] rounded-[10px] cursor-pointer transition-colors"
+        style={{
+          top: 16,
+          right: 16,
+          backgroundColor: toolbarBg,
+          color: toolbarFg,
+          boxShadow: toolbarShadow,
+          zIndex: 100,
+        }}
+      >
+        {isDark ? <FiSun size={16} /> : <FiMoon size={16} />}
+      </button>
     </div>
   );
 }
