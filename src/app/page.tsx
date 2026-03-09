@@ -112,12 +112,6 @@ export default function Home() {
               (projects)
             </span>
           </Link>
-          , or some of my moderately opinionated takes{" "}
-          <Link href="/notes">
-            <span className="font-medium text-(--color-light-gray)">
-              (notes)
-            </span>
-          </Link>
           . Alternatively, feel free to reach out — I&apos;m always on the
           lookout for interesting problems to work on / cool people to work with{" "}
           <Link href="/contact">

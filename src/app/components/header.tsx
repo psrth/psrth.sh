@@ -66,13 +66,6 @@ export default function Header() {
               ref={pathname === "/projects" ? activeItemRef : null}
             />
             <HeaderItem
-              href="/notes"
-              label="notes"
-              currentPath={pathname}
-              ref={pathname.includes("/notes") ? activeItemRef : null}
-              isActive={pathname.includes("/notes")}
-            />
-            <HeaderItem
               href="/contact"
               label="contact"
               currentPath={pathname}
