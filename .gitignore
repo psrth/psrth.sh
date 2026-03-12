@@ -10,3 +10,6 @@ node_modules
 
 # bun
 .bun/
+
+# conductor
+src/app/icon.png
