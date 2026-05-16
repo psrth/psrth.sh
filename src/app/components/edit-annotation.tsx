@@ -13,7 +13,7 @@ export function CommitBadge({
   return (
     <span
       className={cn(
-        "inline-flex align-middle relative -top-px w-[1.3em] h-[1.3em] items-center justify-center rounded-full bg-(--color-teal) text-[0.7em] font-medium leading-none text-white",
+        "inline-flex align-middle relative -top-[2px] w-4 h-4 items-center justify-center rounded-full bg-(--color-teal) text-[10px] font-medium leading-none text-white",
         className
       )}
     >
@@ -37,7 +37,7 @@ export function EditBadge({ commit }: { commit: string }) {
       className="ml-1 inline-flex cursor-pointer align-middle"
       onClick={() => openCommit(commit)}
     >
-      <CommitBadge number={number} />
+      <CommitBadge number={number} className="bg-(--color-teal)/75" />
     </button>
   );
 }

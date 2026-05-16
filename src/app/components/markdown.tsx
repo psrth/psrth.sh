@@ -210,7 +210,7 @@ export const Pre = (props: React.ComponentPropsWithRef<"pre">) => {
 
   return (
     <div className="relative group my-6">
-      <pre className="p-5 pt-10 rounded-lg overflow-x-auto font-mono text-[14px] leading-relaxed bg-[#f9fafb]">
+      <pre className="p-5 pt-10 rounded-lg overflow-x-auto font-mono text-[14px] leading-relaxed bg-[#f9fafb] text-(--color-gray)">
         <div className="absolute right-4 top-3 text-xs bg-[#f2f2f2] px-2 py-0.5 rounded text-(--color-gray) font-mono z-100">
           {languageDisplay}
         </div>

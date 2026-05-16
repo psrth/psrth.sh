@@ -43,7 +43,7 @@ function DrawerContent({
       <DrawerOverlay />
       <DrawerPrimitive.Content
         className={cn(
-          "fixed z-50 top-5 right-3 bottom-3 flex flex-col w-[calc(100vw-1.5rem)] max-w-[640px] bg-white rounded-[14px] border border-light-gray/20 shadow-lg overflow-hidden outline-none",
+          "fixed z-50 top-3 right-3 bottom-3 flex flex-col w-[calc(100vw-1.5rem)] max-w-[640px] bg-white rounded-[14px] border border-light-gray/20 shadow-lg overflow-hidden outline-none",
           className
         )}
         {...props}

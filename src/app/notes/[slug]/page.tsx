@@ -5,6 +5,7 @@ import { H1, H3, MDXComponents } from "@/app/components/markdown";
 import rehypeStarryNight from "rehype-starry-night";
 import { notFound } from "next/navigation";
 import remarkGfm from "remark-gfm";
+import { formatNoteDate } from "@/lib/utils";
 import { getAllNotes, getNote } from "../notes";
 import {
   preloadMultiFileDiff,
@@ -15,6 +16,7 @@ import {
   type PreparedCommit,
 } from "@/app/components/commits-drawer";
 import { CommitHistory } from "@/app/components/commit-history";
+import { ScrollLink } from "@/app/components/scroll-link";
 import { getNoteGitCommits } from "../git-history";
 
 interface NoteProps {
@@ -32,16 +34,6 @@ const DIFF_OPTIONS = {
 } satisfies NonNullable<PreloadMultiFileDiffOptions<undefined>["options"]>;
 
 const NOTE_EDIT_PREFIX = "edit(note):";
-
-function formatNoteDate(iso: string) {
-  const [year, month, day] = iso.split("-").map(Number);
-  return new Date(Date.UTC(year, month - 1, day)).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    timeZone: "UTC",
-  });
-}
 
 function getAddedLines(oldSource: string, newSource: string) {
   const oldLines = oldSource.split("\n");
@@ -132,7 +124,7 @@ async function prepareCommits(slug: string): Promise<{
 
     commits.push({
       slug: commit.slug,
-      message: commit.message,
+      message: commit.message.slice(NOTE_EDIT_PREFIX.length).trim(),
       date: commit.date,
       diff: await preloadMultiFileDiff({
         oldFile: {
@@ -202,17 +194,43 @@ async function Note({ params }: NoteProps) {
     components: MDXComponents,
   });
 
-  const formattedDate = formatNoteDate(note.date);
+  const publishedAt = formatNoteDate(note.date);
+  const lastUpdatedIso = commits[0]?.date ?? note.date;
+  const lastUpdated = formatNoteDate(lastUpdatedIso);
 
   return (
     <CommitsDrawerProvider commits={commits}>
       <Wrapper>
         <article className="prose max-w-none prose-pre:p-0 prose-pre:bg-transparent prose-pre:m-0">
           <H1>{note.title}</H1>
-          <H3>{formattedDate}</H3>
+          <H3 className="flex items-center gap-1.5">
+            <span>Last updated {lastUpdated}</span>
+            <ScrollLink
+              target="edits"
+              ariaLabel="Jump to edit history"
+              className="inline-flex cursor-pointer text-(--color-light-gray)"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="16" x2="12" y2="12" />
+                <line x1="12" y1="8" x2="12.01" y2="8" />
+              </svg>
+            </ScrollLink>
+          </H3>
           {content}
         </article>
-        <CommitHistory publishedAt={formattedDate} />
+        <CommitHistory publishedAt={publishedAt} />
       </Wrapper>
     </CommitsDrawerProvider>
   );

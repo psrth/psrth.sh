@@ -5,6 +5,14 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 
+function isPathActive(pathname: string, href: string) {
+  if (href === "/") {
+    return pathname === "/";
+  }
+
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export default function Header() {
   const pathname = usePathname();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -57,25 +65,25 @@ export default function Header() {
               href="/"
               label="home"
               currentPath={pathname}
-              ref={pathname === "/" ? activeItemRef : null}
+              ref={isPathActive(pathname, "/") ? activeItemRef : null}
             />
             <HeaderItem
               href="/projects"
               label="projects"
               currentPath={pathname}
-              ref={pathname === "/projects" ? activeItemRef : null}
+              ref={isPathActive(pathname, "/projects") ? activeItemRef : null}
             />
             <HeaderItem
               href="/notes"
               label="notes"
               currentPath={pathname}
-              ref={pathname === "/notes" ? activeItemRef : null}
+              ref={isPathActive(pathname, "/notes") ? activeItemRef : null}
             />
             <HeaderItem
               href="/contact"
               label="contact"
               currentPath={pathname}
-              ref={pathname === "/contact" ? activeItemRef : null}
+              ref={isPathActive(pathname, "/contact") ? activeItemRef : null}
             />
           </div>
         </div>
@@ -98,7 +106,9 @@ const HeaderItem = React.forwardRef<HTMLAnchorElement, HeaderItemProps>(
     ref
   ) {
     const isActive =
-      propIsActive !== undefined ? propIsActive : currentPath === href;
+      propIsActive !== undefined
+        ? propIsActive
+        : isPathActive(currentPath, href);
 
     return (
       <Link

@@ -31,12 +31,13 @@ async function Notes() {
       {/* notes table - core */}
       {(() => {
         const shownYears = new Set<string>();
-        return notes.map((note) => {
+        return notes.map((note, index) => {
           const year = note.date.split("-")[0];
           const shouldShowYear = !shownYears.has(year);
           if (shouldShowYear) {
             shownYears.add(year);
           }
+          const isLast = index === notes.length - 1;
           return (
             <div className="flex flex-col" key={note.slug}>
               <Link href={note.link}>
@@ -48,12 +49,14 @@ async function Notes() {
                   >
                     {shouldShowYear ? year : ""}
                   </p>
-                  <p className="text-[16px]/7 md:text-[18px]/8 font-regular text-(--color-gray) overflow-hidden text-ellipsis whitespace-nowrap max-w-[300px] md:max-w-[500px]">
+                  <p className="text-[16px]/7 md:text-[18px]/8 font-regular text-(--color-gray) lowercase overflow-hidden text-ellipsis whitespace-nowrap max-w-[300px] md:max-w-[500px]">
                     {note.title}
                   </p>
                 </div>
               </Link>
-              <div className="w-full h-[2px] bg-(--color-light-gray) opacity-20" />
+              {!isLast && (
+                <div className="w-full h-[2px] bg-(--color-light-gray) opacity-20" />
+              )}
             </div>
           );
         });

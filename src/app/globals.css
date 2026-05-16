@@ -21,12 +21,6 @@ html {
   --color-black: #000000;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --foreground: #ededed;
-  }
-}
-
 @layer utilities {
   @keyframes fadeIn {
     from {

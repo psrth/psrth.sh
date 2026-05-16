@@ -21,6 +21,7 @@ import {
   DrawerHeader,
   DrawerTitle,
 } from "@/app/components/ui/drawer";
+import { formatNoteDate } from "@/lib/utils";
 
 export interface PreparedCommit {
   slug: string;
@@ -114,14 +115,16 @@ export function CommitsDrawerProvider({
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <DrawerTitle>{activeCommit.message}</DrawerTitle>
-                      <DrawerDescription>{activeCommit.date}</DrawerDescription>
+                      <DrawerDescription>
+                        {formatNoteDate(activeCommit.date)}
+                      </DrawerDescription>
                     </div>
                     <DrawerClose className="font-soehne text-[14px]/6 text-(--color-light-gray) hover:text-(--color-gray)">
                       close
                     </DrawerClose>
                   </div>
                 </DrawerHeader>
-                <div className="min-h-0 flex-1 overflow-auto p-3">
+                <div className="min-h-0 flex-1 overflow-auto px-3 pb-3">
                   <MultiFileDiff {...activeCommit.diff} />
                 </div>
               </>
