@@ -48,7 +48,7 @@ export default function Header() {
         <div className="flex flex-row items-center mt-4 md:mt-0 relative">
           <div
             aria-hidden="true"
-            className="absolute top-0 left-0 w-full h-full bg-gray-50 transition-all duration-300 ease-in-out z-0"
+            className="absolute top-0 left-0 w-full h-full bg-gray-50 transition-[clip-path] duration-200 ease-in-out z-0"
             style={{ clipPath: "inset(0 100% 0 0%)" }}
             ref={containerRef}
           />
@@ -64,6 +64,12 @@ export default function Header() {
               label="projects"
               currentPath={pathname}
               ref={pathname === "/projects" ? activeItemRef : null}
+            />
+            <HeaderItem
+              href="/notes"
+              label="notes"
+              currentPath={pathname}
+              ref={pathname === "/notes" ? activeItemRef : null}
             />
             <HeaderItem
               href="/contact"

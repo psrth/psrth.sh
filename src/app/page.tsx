@@ -13,7 +13,7 @@ import {
 
 export default function Home() {
   return (
-    <div className="flex flex-col animate-fade-in">
+    <div className="flex flex-col">
       <Wrapper>
         <Heading>
           Hey, I&apos;m Parth. I&apos;m a designer and engineer, and I build
@@ -49,19 +49,24 @@ export default function Home() {
       />
       <Wrapper>
         <ExperienceListItem status="current">
-          building machine learning algorithms at{" "}
-          <span className="decoration-(--color-light-gray) underline decoration-2 underline-offset-2 [text-decoration-skip-ink:none]">
-            (stealth)
-          </span>{" "}
-          (2025 - present)
+          head of applied ai at{" "}
+          <a
+            href="https://apps.apple.com/us/app/reco-social/id6742024490"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="decoration-(--color-light-gray) underline decoration-2 underline-offset-2 [text-decoration-skip-ink:none]"
+          >
+            reco social
+          </a>{" "}
+         (2025 - present)
         </ExperienceListItem>
-        <ExperienceListItem status="pasrt">
+        <ExperienceListItem status="past">
           tech lead at{" "}
           <a
             href="https://fischerjordan.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="decoration-(--color-light-gray) underline decoration-2 underline-offset-2 [text-decoration-skip-ink:none]"
+            className="decoration-(--color-light-gray)/20 underline decoration-2 underline-offset-2 [text-decoration-skip-ink:none]"
           >
             fischer jordan
           </a>{" "}
@@ -110,6 +115,12 @@ export default function Home() {
           <Link href="/projects">
             <span className="font-medium text-(--color-light-gray)">
               (projects)
+            </span>
+          </Link>
+          , or some of my moderately opinionated takes{" "}
+          <Link href="/notes">
+            <span className="font-medium text-(--color-light-gray)">
+              (notes)
             </span>
           </Link>
           . Alternatively, feel free to reach out — I&apos;m always on the

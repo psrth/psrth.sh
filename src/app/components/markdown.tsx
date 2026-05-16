@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import { EditBadge } from "./edit-annotation";
 
 interface ElementProps {
   children: ReactNode;
@@ -268,6 +269,7 @@ export const TableBody = ({ children, className = "" }: ElementProps) => (
 );
 
 export const MDXComponents = {
+  EditBadge,
   // text components
   h1: H1,
   h2: H2,

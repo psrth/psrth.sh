@@ -8,16 +8,28 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    date: "2026-02-24",
+    title: "mori db",
+    image: "/projects/projects_mori.png",
+    description: "mori is an open-source ephemeral proxy to your production database written in go. writes are sandboxed locally. reads get live data from prod, resolved with all your local changes in-flight. built during anthropic's claude code hackathon.",
+    links: [
+      {
+        label: "watch the live demo",
+        url: "https://www.moridb.sh/demo",
+      },
+    ]
+  },
+  {
     date: "2025-05-11",
     title: "Pulsespot AI",
     image: "/projects/projects_pulse.png",
     description:
       "Built a sales and revenue intelligence platform w/ Next, FastAPI, Redis. Uses an async LLM-powered email ingestion pipeline that processes ~10k emails / day to generate real-time account intelligence reports. Currently in beta with a publicly traded biotech company.",
     links: [
-      // {
-      //   label: "learn more about pulse",
-      //   url: "https://pulsespot.ai",
-      // },
+      {
+        label: "learn more about pulse",
+        url: "https://pulsespot.ai",
+      },
     ],
   },
   {

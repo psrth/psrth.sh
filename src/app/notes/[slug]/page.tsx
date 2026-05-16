@@ -1,29 +1,156 @@
-import fs from "fs";
-import path from "path";
 import { compileMDX } from "next-mdx-remote/rsc";
 import Wrapper from "@/app/components/wrapper";
 import { Metadata } from "next";
-import { MDXComponents } from "@/app/components/markdown";
+import { H1, H3, MDXComponents } from "@/app/components/markdown";
 import rehypeStarryNight from "rehype-starry-night";
 import { notFound } from "next/navigation";
 import remarkGfm from "remark-gfm";
+import { getAllNotes, getNote } from "../notes";
+import {
+  preloadMultiFileDiff,
+  type PreloadMultiFileDiffOptions,
+} from "@pierre/diffs/ssr";
+import {
+  CommitsDrawerProvider,
+  type PreparedCommit,
+} from "@/app/components/commits-drawer";
+import { CommitHistory } from "@/app/components/commit-history";
+import { getNoteGitCommits } from "../git-history";
 
 interface NoteProps {
   params: Promise<{
     slug: string;
   }>;
 }
-function extractTitle(content: string): string {
-  const titleMatch = content.match(/^# (.*$)/m);
-  if (titleMatch) return titleMatch[1];
-  return slugToTitle(content);
+
+const DIFF_OPTIONS = {
+  theme: "pierre-light",
+  diffStyle: "unified",
+  diffIndicators: "classic",
+  overflow: "wrap",
+  lineDiffType: "word-alt",
+} satisfies NonNullable<PreloadMultiFileDiffOptions<undefined>["options"]>;
+
+const NOTE_EDIT_PREFIX = "edit(note):";
+
+function formatNoteDate(iso: string) {
+  const [year, month, day] = iso.split("-").map(Number);
+  return new Date(Date.UTC(year, month - 1, day)).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC",
+  });
 }
 
-function slugToTitle(slug: string): string {
-  return slug
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
+function getAddedLines(oldSource: string, newSource: string) {
+  const oldLines = oldSource.split("\n");
+  const newLines = newSource.split("\n");
+  const dp = Array.from({ length: oldLines.length + 1 }, () =>
+    Array<number>(newLines.length + 1).fill(0)
+  );
+
+  for (let oldIndex = oldLines.length - 1; oldIndex >= 0; oldIndex -= 1) {
+    for (let newIndex = newLines.length - 1; newIndex >= 0; newIndex -= 1) {
+      dp[oldIndex][newIndex] =
+        oldLines[oldIndex] === newLines[newIndex]
+          ? dp[oldIndex + 1][newIndex + 1] + 1
+          : Math.max(dp[oldIndex + 1][newIndex], dp[oldIndex][newIndex + 1]);
+    }
+  }
+
+  const added: string[] = [];
+  let oldIndex = 0;
+  let newIndex = 0;
+
+  while (oldIndex < oldLines.length && newIndex < newLines.length) {
+    if (oldLines[oldIndex] === newLines[newIndex]) {
+      oldIndex += 1;
+      newIndex += 1;
+    } else if (dp[oldIndex + 1][newIndex] >= dp[oldIndex][newIndex + 1]) {
+      oldIndex += 1;
+    } else {
+      added.push(newLines[newIndex]);
+      newIndex += 1;
+    }
+  }
+
+  return added.concat(newLines.slice(newIndex));
+}
+
+function shouldAnnotateLine(line: string, inFence: boolean) {
+  const trimmed = line.trim();
+
+  return (
+    !inFence &&
+    trimmed.length > 0 &&
+    !trimmed.startsWith("#") &&
+    !trimmed.startsWith("```")
+  );
+}
+
+function annotateSource(source: string, commitByAddedLine: Map<string, string>) {
+  let inFence = false;
+
+  return source
+    .split("\n")
+    .map((line) => {
+      const trimmed = line.trim();
+
+      if (trimmed.startsWith("```")) {
+        inFence = !inFence;
+        return line;
+      }
+
+      const commitSlug = commitByAddedLine.get(line);
+
+      if (!commitSlug || !shouldAnnotateLine(line, inFence)) {
+        return line;
+      }
+
+      return `${line} <EditBadge commit="${commitSlug}" />`;
+    })
+    .join("\n");
+}
+
+async function prepareCommits(slug: string): Promise<{
+  commits: PreparedCommit[];
+  commitByAddedLine: Map<string, string>;
+}> {
+  const gitCommits = (await getNoteGitCommits(slug)).filter((commit) =>
+    commit.message.startsWith(NOTE_EDIT_PREFIX)
+  );
+  const commitByAddedLine = new Map<string, string>();
+  const commits: PreparedCommit[] = [];
+
+  for (const commit of gitCommits) {
+    for (const line of getAddedLines(commit.oldContents, commit.newContents)) {
+      if (!commitByAddedLine.has(line)) {
+        commitByAddedLine.set(line, commit.slug);
+      }
+    }
+
+    commits.push({
+      slug: commit.slug,
+      message: commit.message,
+      date: commit.date,
+      diff: await preloadMultiFileDiff({
+        oldFile: {
+          name: `${slug}.mdx`,
+          contents: commit.oldContents,
+          cacheKey: `${commit.slug}:old`,
+        },
+        newFile: {
+          name: `${slug}.mdx`,
+          contents: commit.newContents,
+          cacheKey: `${commit.slug}:new`,
+        },
+        options: DIFF_OPTIONS,
+      }),
+    });
+  }
+
+  return { commits, commitByAddedLine };
 }
 
 export async function generateMetadata({
@@ -31,64 +158,41 @@ export async function generateMetadata({
 }: NoteProps): Promise<Metadata> {
   const resolvedParams = await params;
   const { slug } = resolvedParams;
-  const source = await getNote(slug);
-  const title = extractTitle(source);
+  const note = await getNote(slug);
+
+  if (!note) {
+    notFound();
+  }
 
   return {
-    title,
-    description: `Read more about ${title}`,
+    title: note.title,
+    description: note.description ?? `Read more about ${note.title}`,
   };
 }
 
 export async function generateStaticParams() {
-  try {
-    const contentDir = path.join(
-      process.cwd(),
-      "src",
-      "app",
-      "notes",
-      "content"
-    );
-    const files = fs.readdirSync(contentDir);
+  const notes = await getAllNotes();
 
-    return files
-      .filter((file) => file.endsWith(".mdx"))
-      .map((file) => ({
-        slug: file.replace(/\.mdx$/, ""),
-      }));
-  } catch (error) {
-    console.error("Error reading directory:", error);
-    return [];
-  }
-}
-
-async function getNote(slug: string) {
-  try {
-    const filePath = path.join(
-      process.cwd(),
-      "src",
-      "app",
-      "notes",
-      "content",
-      `${slug}.mdx`
-    );
-    const source = fs.readFileSync(filePath, "utf8");
-    return source;
-  } catch (error) {
-    console.error("Error reading file:", error);
-    notFound();
-  }
+  return notes.map((note) => ({
+    slug: note.slug,
+  }));
 }
 
 async function Note({ params }: NoteProps) {
   const resolvedParams = await params;
   const { slug } = resolvedParams;
-  const source = await getNote(slug);
+  const note = await getNote(slug);
+
+  if (!note) {
+    notFound();
+  }
+
+  const { commits, commitByAddedLine } = await prepareCommits(slug);
+  const annotatedSource = annotateSource(note.source, commitByAddedLine);
 
   const { content } = await compileMDX({
-    source,
+    source: annotatedSource,
     options: {
-      parseFrontmatter: true,
       mdxOptions: {
         remarkPlugins: [remarkGfm],
         rehypePlugins: [[rehypeStarryNight]],
@@ -98,12 +202,19 @@ async function Note({ params }: NoteProps) {
     components: MDXComponents,
   });
 
+  const formattedDate = formatNoteDate(note.date);
+
   return (
-    <Wrapper>
-      <article className="prose max-w-none prose-pre:p-0 prose-pre:bg-transparent prose-pre:m-0 mb-[100px]">
-        {content}
-      </article>
-    </Wrapper>
+    <CommitsDrawerProvider commits={commits}>
+      <Wrapper>
+        <article className="prose max-w-none prose-pre:p-0 prose-pre:bg-transparent prose-pre:m-0">
+          <H1>{note.title}</H1>
+          <H3>{formattedDate}</H3>
+          {content}
+        </article>
+        <CommitHistory publishedAt={formattedDate} />
+      </Wrapper>
+    </CommitsDrawerProvider>
   );
 }
 
