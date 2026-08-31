@@ -73,12 +73,14 @@ export default function Header() {
               currentPath={pathname}
               ref={isPathActive(pathname, "/projects") ? activeItemRef : null}
             />
+            {/* notes temporarily hidden
             <HeaderItem
               href="/notes"
               label="notes"
               currentPath={pathname}
               ref={isPathActive(pathname, "/notes") ? activeItemRef : null}
             />
+            */}
             <HeaderItem
               href="/contact"
               label="contact"

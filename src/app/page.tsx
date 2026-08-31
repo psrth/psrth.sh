@@ -70,7 +70,7 @@ export default function Home() {
           >
             fischer jordan
           </a>{" "}
-          (2023 - 2025)
+          (2023 - 25)
         </ExperienceListItem>
         <ExperienceListItem status="past">
           graduated from{" "}
@@ -115,12 +115,6 @@ export default function Home() {
           <Link href="/projects">
             <span className="font-medium text-(--color-light-gray)">
               (projects)
-            </span>
-          </Link>
-          , or some of my moderately opinionated takes{" "}
-          <Link href="/notes">
-            <span className="font-medium text-(--color-light-gray)">
-              (notes)
             </span>
           </Link>
           . Alternatively, feel free to reach out — I&apos;m always on the
