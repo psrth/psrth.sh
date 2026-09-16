@@ -8,6 +8,18 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    date: "2026-08-24",
+    title: "iris",
+    image: "/projects/projects_iris.png",
+    description: "iris is a secure, open-source transport that lets agent swarms collaborate across harnesses, models, and machines. built on top of the secure tailcat protocol.",
+    links: [
+      {
+        label: "read the docs",
+        url: "https://www.iris-tl.dev/",
+      },
+    ]
+  },
+  {
     date: "2026-02-24",
     title: "mori db",
     image: "/projects/projects_mori.png",

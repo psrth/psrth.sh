@@ -87,7 +87,7 @@ export default function Home() {
         <ExperienceListItem status="past">
           sold the tech ip for{" "}
           <a
-            href="https://doubltap.co"
+            href="https://dt.psrth.sh"
             target="_blank"
             rel="noopener noreferrer"
             className="decoration-(--color-light-gray)/20 underline decoration-2 underline-offset-2 [text-decoration-skip-ink:none]"
@@ -99,7 +99,7 @@ export default function Home() {
         <ExperienceListItem status="past">
           built software for sequoia, lightspeed, and more at{" "}
           <a
-            href="https://orangeyak.co"
+            href="https://oyc.psrth.sh"
             target="_blank"
             rel="noopener noreferrer"
             className="decoration-(--color-light-gray)/20 underline decoration-2 underline-offset-2 [text-decoration-skip-ink:none]"
